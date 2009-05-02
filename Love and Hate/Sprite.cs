@@ -123,7 +123,7 @@ namespace Love_and_Hate
         //Load the texture for the sprite using the Content Pipeline
         protected override void LoadContent()
         {
-            mSpriteBatch = new SpriteBatch(Game.GraphicsDevice);
+            mSpriteBatch = Program.Instance.mSpriteBatch; // new SpriteBatch(Game.GraphicsDevice);
             mSpriteTexture = Game.Content.Load<Texture2D>(mAssetName);
             mPixelScale = 1.0f / mSpriteTexture.Width;
 
