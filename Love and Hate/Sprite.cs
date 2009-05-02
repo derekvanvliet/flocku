@@ -127,7 +127,8 @@ namespace Love_and_Hate
             mSpriteTexture = Game.Content.Load<Texture2D>(mAssetName);
             mPixelScale = 1.0f / mSpriteTexture.Width;
 
-            mBboxTex = Game.Content.Load<Texture2D>("bbox");
+            if (Config.Instance.DebugMode())
+                mBboxTex = Game.Content.Load<Texture2D>("bbox");
 
             base.LoadContent();
         }
