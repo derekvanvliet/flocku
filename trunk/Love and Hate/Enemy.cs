@@ -16,9 +16,16 @@ namespace Love_and_Hate
         public float mMinHelpless = 0.5f;
         public Vector2 mVelocity = new Vector2();
         public int mLevel = 0;
-        public AnimatedSprite mAttackSide;
-        public AnimatedSprite mRunSide;
+        public AnimatedSprite mAnimPlayer0;
+        public AnimatedSprite mAnimPlayer1;
+        public AnimatedSprite mAnimPlayer2;
+        public AnimatedSprite mAnimPlayer3;
+        public AnimatedSprite mAnimPlayer4;
         public Player mOwner;
+        public float mTimer;
+        public float mOwnedTime;
+        public float mOwnedDuration;
+
         public enum eEnemyState
         {
             ATTACK = 0,
@@ -102,36 +109,77 @@ namespace Love_and_Hate
             }
             int iPlayerFrameRate = Config.Instance.GetAsInt("PlayerFrameRate");
 
-            mAttackSide = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\AttackSide\\enemyattack", 8, iPlayerFrameRate);
-            mRunSide = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\RunSide\\enemyrunside", 8, iPlayerFrameRate);
-
-
+            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\RunSide\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\AttackSide\\enemyattack", 8, iPlayerFrameRate);
+            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\RunSide\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\AttackSide\\enemyattack", 8, iPlayerFrameRate);
+            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\RunSide\\enemyrunside", 8, iPlayerFrameRate);
         }
 
         public override void DrawSprite(GameTime gameTime)
         {
-            if (EnemyState == eEnemyState.RUN)
+            if (mOwner != null)
             {
-                if (mVelocity.X > 10)
-                    this.mRunSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
-                else if (mVelocity.X < -10)
-                    this.mRunSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
-                else if (mVelocity.Y > 10)
-                    this.mRunSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
-                else
-                    this.mRunSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                if (mOwner.m_id == PlayerIndex.One)
+                {
+                    if (mVelocity.X > 10)
+                        this.mAnimPlayer1.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else if (mVelocity.X < -10)
+                        this.mAnimPlayer1.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    else if (mVelocity.Y > 10)
+                        this.mAnimPlayer1.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else
+                        this.mAnimPlayer1.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                }
+                else if (mOwner.m_id == PlayerIndex.Two)
+                {
+                    if (mVelocity.X > 10)
+                        this.mAnimPlayer2.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else if (mVelocity.X < -10)
+                        this.mAnimPlayer2.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    else if (mVelocity.Y > 10)
+                        this.mAnimPlayer2.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else
+                        this.mAnimPlayer2.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                }
+                else if (mOwner.m_id == PlayerIndex.Three)
+                {
+                    if (mVelocity.X > 10)
+                        this.mAnimPlayer3.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else if (mVelocity.X < -10)
+                        this.mAnimPlayer3.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    else if (mVelocity.Y > 10)
+                        this.mAnimPlayer3.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else
+                        this.mAnimPlayer3.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+
+                }
+                else if (mOwner.m_id == PlayerIndex.Four)
+                {
+                    if (mVelocity.X > 10)
+                        this.mAnimPlayer4.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else if (mVelocity.X < -10)
+                        this.mAnimPlayer4.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    else if (mVelocity.Y > 10)
+                        this.mAnimPlayer4.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    else
+                        this.mAnimPlayer4.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+
+                }
             }
             else
             {
                 if (mVelocity.X > 10)
-                    this.mAttackSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    this.mAnimPlayer0.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
                 else if (mVelocity.X < -10)
-                    this.mAttackSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    this.mAnimPlayer0.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
                 else if (mVelocity.Y > 10)
-                    this.mAttackSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    this.mAnimPlayer0.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
                 else
-                    this.mAttackSide.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    this.mAnimPlayer0.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+
             }
+
             base.DrawSprite(gameTime);
         }
 
@@ -139,10 +187,14 @@ namespace Love_and_Hate
         {
             
             float mls = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
+            mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            this.mAttackSide.Update(gameTime);
-            this.mRunSide.Update(gameTime);
-
+            this.mAnimPlayer0.Update(gameTime);
+            this.mAnimPlayer1.Update(gameTime);
+            this.mAnimPlayer2.Update(gameTime);
+            this.mAnimPlayer3.Update(gameTime);
+            this.mAnimPlayer4.Update(gameTime);
+            
             // move towards nearest owner
             if (mOwner != null)
             {
@@ -151,6 +203,12 @@ namespace Love_and_Hate
 
                 mVelocity = mVelocity + mls * (dir * mChaseStrength);
                 EnemyState = eEnemyState.ATTACK;
+
+                if (mTimer - mOwnedTime > mOwnedDuration)
+                {
+                    mOwner.mOwnedCount--;
+                    mOwner = null;
+                }
             }
             else
             {
@@ -316,6 +374,14 @@ namespace Love_and_Hate
                 }
             }
             return count;
+        }
+
+        public void SetOwned(Player owner)
+        {
+            mOwner = owner;
+            mOwnedTime = mTimer;
+            owner.mOwnedCount++;
+            mOwnedDuration = (owner.mOwnedCount * 1000) + 5000;
         }
     }
 }

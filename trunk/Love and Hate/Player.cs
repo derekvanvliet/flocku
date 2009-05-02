@@ -13,6 +13,7 @@ namespace Love_and_Hate
         public int mDefaultSize = 64;
         public bool bInitialized = false;
         private bool mIsUsingKeyboard = false;
+        public int mOwnedCount = 0;
 
         public enum ePlayerState
         {
@@ -146,7 +147,7 @@ namespace Love_and_Hate
         
         static AnimatedSprite m_mergeMonsterAnim;
 
-        private PlayerIndex m_id;
+        public PlayerIndex m_id;
         
         public PlayerIndex id
         {
@@ -454,63 +455,65 @@ namespace Love_and_Hate
 
             foreach (Enemy e in Program.Instance.mEnemies)
             {
-
-                if (CheckForCollision(e))
+                if (e.mOwner != this)
                 {
-                    if (e.PixelWidth < this.PixelWidth)
+
+                    if (CheckForCollision(e))
                     {
-                        AudioManager.Instance.PlaySound("MonsterDie");
-
-                        /*
-                        AnimatedSpriteEx killAnim = new AnimatedSpriteEx(this.Game);
-
-                        killAnim.Position =
-                            new Vector2(e.mPosition.X - (e.PixelWidth * 2),
-                                        e.mPosition.Y - (e.PixelHeight * 2));
-                            
-                        killAnim.Load(this.Game.Content, new Vector2(0, 0), "\\kill anim\\Kill", 8, 20);
-
-                        AnimatedSpriteManager.Instance.Add(killAnim);
-
-                        e.Destroy();
-                        destroy.Add(e);
-                        */
-                        e.mOwner = this;
-                        e.mAvoidStrength = 750;
-                        Vector2 pos = mPosition;
-
-                        /*
-                        PixelWidth += 5;
-                        PixelHeight += 5;
-                        */
-
-                        //mScale.X *= 1.1f;
-                        //mScale.Y = mScale.X;
-                        mPosition = pos;
-                        //mBounds.Radius = Radius;
-                        //mBounds.Center.X = mPositionX;
-                        //mBounds.Center.Y = mPositionY;                        
-                        this.SetBboxPos(mPosition);
-
-
-                        this.m_idleFrontAnim.Scale = mScale.X;
-                        this.m_runAnim.Scale = mScale.X;
-
-                        Program.Instance.mEnemiesKilled++;
-                        if (Program.Instance.mEnemiesKilled % 3 == 0)
+                        if (e.PixelWidth < this.PixelWidth)
                         {
-                            //if (Program.Instance.mMaxEnemies < 100)
-                                //Program.Instance.mMaxEnemies++;
-                        }
-                    }
-                    else
-                    {
-                        /*
-                        e.Destroy();
-                        destroy.Add(e);
+                            AudioManager.Instance.PlaySound("MonsterDie");
 
-                        Reset((int)(PixelWidth*0.5f));
-                         * */
+                            /*
+                            AnimatedSpriteEx killAnim = new AnimatedSpriteEx(this.Game);
+
+                            killAnim.Position =
+                                new Vector2(e.mPosition.X - (e.PixelWidth * 2),
+                                            e.mPosition.Y - (e.PixelHeight * 2));
+                            
+                            killAnim.Load(this.Game.Content, new Vector2(0, 0), "\\kill anim\\Kill", 8, 20);
+
+                            AnimatedSpriteManager.Instance.Add(killAnim);
+
+                            e.Destroy();
+                            destroy.Add(e);
+                            */
+                            e.SetOwned(this);
+                            Vector2 pos = mPosition;
+
+                            /*
+                            PixelWidth += 5;
+                            PixelHeight += 5;
+                            */
+
+                            //mScale.X *= 1.1f;
+                            //mScale.Y = mScale.X;
+                            mPosition = pos;
+                            //mBounds.Radius = Radius;
+                            //mBounds.Center.X = mPositionX;
+                            //mBounds.Center.Y = mPositionY;                        
+                            this.SetBboxPos(mPosition);
+
+
+                            this.m_idleFrontAnim.Scale = mScale.X;
+                            this.m_runAnim.Scale = mScale.X;
+
+                            Program.Instance.mEnemiesKilled++;
+                            if (Program.Instance.mEnemiesKilled % 3 == 0)
+                            {
+                                //if (Program.Instance.mMaxEnemies < 100)
+                                //Program.Instance.mMaxEnemies++;
+                            }
+                        }
+                        else
+                        {
+                            /*
+                            e.Destroy();
+                            destroy.Add(e);
+
+                            Reset((int)(PixelWidth*0.5f));
+                             * */
+                        }
                     }
                 }
             }
