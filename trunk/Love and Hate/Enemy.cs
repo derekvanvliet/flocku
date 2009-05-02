@@ -49,7 +49,7 @@ namespace Love_and_Hate
 
         protected override void SetAssetName()
         {
-            mAssetName = "enemy/AttackSide/enemyattack_0000";
+            mAssetName = "enemy/player0/enemyrunside_0000";
         }
 
         public override void Initialize()
@@ -109,11 +109,11 @@ namespace Love_and_Hate
             }
             int iPlayerFrameRate = Config.Instance.GetAsInt("PlayerFrameRate");
 
-            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\RunSide\\enemyrunside", 8, iPlayerFrameRate);
-            mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\AttackSide\\enemyattack", 8, iPlayerFrameRate);
-            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\RunSide\\enemyrunside", 8, iPlayerFrameRate);
-            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\AttackSide\\enemyattack", 8, iPlayerFrameRate);
-            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\RunSide\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player0\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player1\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player2\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player3\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4\\enemyrunside", 8, iPlayerFrameRate);
         }
 
         public override void DrawSprite(GameTime gameTime)

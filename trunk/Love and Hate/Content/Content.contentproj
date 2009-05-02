@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <ProjectGuid>cc5fd01c-42de-4701-8eda-efdea810cfe2</ProjectGuid>
     <ProjectTypeGuids>{96E2B04D-8817-42c6-938A-82C39BA4D311};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -66,90 +66,6 @@
   <ItemGroup>
     <Compile Include="Backgound_01.png">
       <Name>Backgound_01</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="enemy\AttackSide\enemyattack_0000.png">
-      <Name>enemyattack_0000</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\AttackSide\enemyattack_0001.png">
-      <Name>enemyattack_0001</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\AttackSide\enemyattack_0002.png">
-      <Name>enemyattack_0002</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\AttackSide\enemyattack_0003.png">
-      <Name>enemyattack_0003</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\AttackSide\enemyattack_0004.png">
-      <Name>enemyattack_0004</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\AttackSide\enemyattack_0005.png">
-      <Name>enemyattack_0005</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\AttackSide\enemyattack_0006.png">
-      <Name>enemyattack_0006</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\AttackSide\enemyattack_0007.png">
-      <Name>enemyattack_0007</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="enemy\RunSide\enemyrunside_0000.png">
-      <Name>enemyrunside_0000</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\RunSide\enemyrunside_0001.png">
-      <Name>enemyrunside_0001</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\RunSide\enemyrunside_0002.png">
-      <Name>enemyrunside_0002</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\RunSide\enemyrunside_0003.png">
-      <Name>enemyrunside_0003</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\RunSide\enemyrunside_0004.png">
-      <Name>enemyrunside_0004</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\RunSide\enemyrunside_0005.png">
-      <Name>enemyrunside_0005</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\RunSide\enemyrunside_0006.png">
-      <Name>enemyrunside_0006</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="enemy\RunSide\enemyrunside_0007.png">
-      <Name>enemyrunside_0007</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -635,6 +551,208 @@
   <ItemGroup>
     <Compile Include="bbox.png">
       <Name>bbox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="enemy\player0\enemyrunside_0000.png">
+      <Name>enemyrunside_0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player0\enemyrunside_0001.png">
+      <Name>enemyrunside_0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player0\enemyrunside_0002.png">
+      <Name>enemyrunside_0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player0\enemyrunside_0003.png">
+      <Name>enemyrunside_0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player0\enemyrunside_0004.png">
+      <Name>enemyrunside_0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player0\enemyrunside_0005.png">
+      <Name>enemyrunside_0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player0\enemyrunside_0006.png">
+      <Name>enemyrunside_0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player0\enemyrunside_0007.png">
+      <Name>enemyrunside_0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0000.png">
+      <Name>enemyrunside_0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0001.png">
+      <Name>enemyrunside_0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0002.png">
+      <Name>enemyrunside_0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0003.png">
+      <Name>enemyrunside_0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0004.png">
+      <Name>enemyrunside_0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0005.png">
+      <Name>enemyrunside_0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0006.png">
+      <Name>enemyrunside_0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player1\enemyrunside_0007.png">
+      <Name>enemyrunside_0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0000.png">
+      <Name>enemyrunside_0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0001.png">
+      <Name>enemyrunside_0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0002.png">
+      <Name>enemyrunside_0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0003.png">
+      <Name>enemyrunside_0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0004.png">
+      <Name>enemyrunside_0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0005.png">
+      <Name>enemyrunside_0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0006.png">
+      <Name>enemyrunside_0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player2\enemyrunside_0007.png">
+      <Name>enemyrunside_0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0000.png">
+      <Name>enemyrunside_0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0001.png">
+      <Name>enemyrunside_0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0002.png">
+      <Name>enemyrunside_0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0003.png">
+      <Name>enemyrunside_0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0004.png">
+      <Name>enemyrunside_0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0005.png">
+      <Name>enemyrunside_0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0006.png">
+      <Name>enemyrunside_0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player3\enemyrunside_0007.png">
+      <Name>enemyrunside_0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0000.png">
+      <Name>enemyrunside_0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0001.png">
+      <Name>enemyrunside_0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0002.png">
+      <Name>enemyrunside_0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0003.png">
+      <Name>enemyrunside_0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0004.png">
+      <Name>enemyrunside_0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0005.png">
+      <Name>enemyrunside_0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0006.png">
+      <Name>enemyrunside_0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="enemy\player4\enemyrunside_0007.png">
+      <Name>enemyrunside_0007</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
