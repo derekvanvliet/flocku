@@ -14,17 +14,10 @@ namespace Love_and_Hate
 
         static void Main(string[] args)
         {
-            try
-            {
                 using (mGame = new Game1())
                 {
                     mGame.Run();
                 }
-            }
-            catch (Exception e)
-            {
-                ReportException(e);
-            }
         }
 
         public static Game1 Instance

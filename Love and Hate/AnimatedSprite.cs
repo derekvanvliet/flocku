@@ -56,7 +56,7 @@ namespace Love_and_Hate
 
         public void Load(ContentManager content, string asset, int frameCount, int framesPerSec)
         {
-            sb = new SpriteBatch(GameObj.GraphicsDevice);
+            sb = Program.Instance.mSpriteBatch;
 
             framecount = frameCount;
 

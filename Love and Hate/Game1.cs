@@ -47,6 +47,7 @@ namespace Love_and_Hate
         private bool bRestart;
         public Vector2 mCurrentPointOfInterest;
         public float mLastPOIUpdateTime;
+        public SpriteBatch mSpriteBatch;
 
         public Game1()
         {
@@ -84,7 +85,8 @@ namespace Love_and_Hate
  			// TODO: Add your initialization logic here
             mGameState = GameState.Init;
 
-           
+
+            mSpriteBatch = new SpriteBatch(this.GraphicsDevice);
             base.Initialize();
         }
 
