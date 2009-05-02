@@ -191,10 +191,10 @@ namespace Love_and_Hate
             float x = pos.X - (this.PixelWidth / 2);
             float y = pos.Y - (this.PixelHeight / 2);
 
-            float width  = this.PixelWidth  * 0.80f;
-            float height = this.PixelHeight * 0.90f;
+            float width  = this.PixelWidth;
+            float height = this.PixelHeight;
 
-            this.mBounds.Min = new Vector3(x + (this.PixelWidth * 0.2f), y + (this.PixelHeight * 0.3f), -1);
+            this.mBounds.Min = new Vector3(x + (this.PixelWidth * mPixelScale), y + (this.PixelHeight * mPixelScale), -1);
             this.mBounds.Max = new Vector3(x + width, y + height, -1);
         }
 
