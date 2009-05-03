@@ -27,6 +27,7 @@ namespace Love_and_Hate
         GraphicsDeviceManager graphics;
         private GameState mGameState;
         public List<Enemy> mEnemies;
+        public List<Powerup> mPowerups;
         public int mEnemiesKilled = 0;
         public int mMaxEnemies = 0;
         public Background mBackground;
@@ -50,6 +51,9 @@ namespace Love_and_Hate
         public SpriteBatch mSpriteBatch;
         List<Enemy> mDestroyEnemies = new List<Enemy>();
         public int mAlivePlayerCount;
+        public float mLastPowerupTime;
+        List<Powerup> mDestroyPowerups = new List<Powerup>();
+
 
         public Game1()
         {
@@ -59,6 +63,7 @@ namespace Love_and_Hate
             graphics.IsFullScreen = false;
 
             mEnemies = new List<Enemy>();
+            mPowerups = new List<Powerup>();
 
             mMaxEnemies = Config.Instance.GetAsInt("MaxEnemies");
 
@@ -175,6 +180,9 @@ namespace Love_and_Hate
 
                 foreach (Enemy e in mEnemies)
                     e.DrawSprite(gameTime);
+
+                foreach (Powerup pow in mPowerups)
+                    pow.DrawSprite(gameTime);
 
                 if (this.mGameState == GameState.GameOver)
                 {
@@ -301,6 +309,18 @@ namespace Love_and_Hate
                 }
 
                 mDestroyEnemies.Clear();
+
+                foreach (Powerup p in mDestroyPowerups)
+                {
+                    Program.Instance.mPowerups.Remove(p);
+                }
+
+                mDestroyPowerups.Clear();
+
+                if (mTimer - mLastPowerupTime > 10000)
+                {
+                    NewPowerup();
+                }
             }
             else
             {
@@ -433,6 +453,10 @@ namespace Love_and_Hate
 
             foreach (Player p in m_GamePlayers)
             {
+                if (p.mPowerupBurstIcon != null)
+                {
+                    p.mPowerupBurstIcon.Destroy();
+                }
                 p.Destroy();
             }
 
@@ -444,6 +468,16 @@ namespace Love_and_Hate
             }
 
             mEnemies = new List<Enemy>();
+
+            foreach (Powerup pow in mPowerups)
+            {
+                pow.Destroy();
+            }
+
+            mPowerups = new List<Powerup>();
+
+            mLastPowerupTime = 0;
+            mTimer = 0;
 
             mMaxEnemies = Config.Instance.GetAsInt("MaxEnemies");
 
@@ -583,6 +617,35 @@ namespace Love_and_Hate
             }
             e.Destroy();
             mDestroyEnemies.Add(e);
+        }
+
+        public void DestroyPowerup(Powerup p)
+        {
+            p.Destroy();
+            mDestroyPowerups.Add(p);
+        }
+
+        public void NewPowerup()
+        {
+            Random random = new Random((int)DateTime.Now.Ticks);
+            int rnd = random.Next(0,2);
+
+            if (rnd == 0) 
+            {
+                PowerupBurst pow = new PowerupBurst(this, this.Content);
+                pow.mPositionX = random.Next(0, Config.Instance.GetAsInt("ScreenWidth") - 64);
+                pow.mPositionY = random.Next(0, Config.Instance.GetAsInt("ScreenHeight") - 64);
+                mPowerups.Add(pow);
+            }
+            else if (rnd == 1)
+            {
+                PowerupHealth pow = new PowerupHealth(this, this.Content);
+                pow.mPositionX = random.Next(0, Config.Instance.GetAsInt("ScreenWidth") - 64);
+                pow.mPositionY = random.Next(0, Config.Instance.GetAsInt("ScreenHeight") - 64);
+                mPowerups.Add(pow);
+            }
+
+            mLastPowerupTime = mTimer;
         }
     }
 }
