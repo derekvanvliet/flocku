@@ -637,6 +637,21 @@ namespace Love_and_Hate
                 }
             }
 
+            if (IsButtonPressed(GamePad.GetState(m_id).Buttons.A))
+            {
+                Random random = new Random((int)DateTime.Now.Ticks);
+                while (mEnemiesOwned.Count > 0)
+                {
+
+                    firedir.X = random.Next(0, 100) - 50;
+                    firedir.Y = random.Next(0, 100) - 50;
+                    
+                    mEnemiesOwned[0].mPosition = mPosition;
+                    mEnemiesOwned[0].Fire(firedir);
+                    UnOwnEnemy(mEnemiesOwned[0]);
+                }
+            }
+
             Vector2 drag2 = new Vector2(-mVelocity.X, -mVelocity.Y);
             if (drag2.Length() != 0)
             {
