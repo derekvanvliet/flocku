@@ -253,7 +253,15 @@ namespace Love_and_Hate
                         dir.Normalize();
 
                         mVelocity = mVelocity + mls * (dir * mAvoidEnemyStrength);
+                    }
+                }
 
+                Enemy ownedEnemy = GetNearestOwnedEnemy();
+                if (ownedEnemy != null)
+                {
+                    Vector2 dir = mPosition - enemy.mPosition;
+                    if (dir.Length() - Radius - enemy.Radius < InterestRadius)
+                    {
                         if (dir.Length() - Radius - enemy.Radius < Radius)
                         {
                             if (mOwner != null && enemy.mOwner != null && mOwner != enemy.mOwner)
@@ -277,6 +285,7 @@ namespace Love_and_Hate
                         }
                     }
                 }
+
 
                 // add drag
                 Vector2 drag = new Vector2(-mVelocity.X, -mVelocity.Y);
@@ -404,6 +413,36 @@ namespace Love_and_Hate
                     {
                         closest = enemy;
                         closestDistance = distance.Length();
+                    }
+                }
+            }
+
+            return closest;
+        }
+
+        public Enemy GetNearestOwnedEnemy()
+        {
+            Enemy closest = this;
+            float closestDistance = 0f;
+
+            foreach (Enemy enemy in Program.Instance.mEnemies)
+            {
+                if (enemy.mOwner != null && enemy.mOwner != this.mOwner)
+                {
+                    if (closestDistance == 0)
+                    {
+                        closest = enemy;
+                        Vector2 distance = enemy.mPosition - mPosition;
+                        closestDistance = distance.Length();
+                    }
+                    else
+                    {
+                        Vector2 distance = enemy.mPosition - mPosition;
+                        if (distance.Length() - Radius - enemy.Radius < closestDistance)
+                        {
+                            closest = enemy;
+                            closestDistance = distance.Length();
+                        }
                     }
                 }
             }
