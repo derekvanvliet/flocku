@@ -18,6 +18,7 @@ namespace Love_and_Hate
         bool mFiring = false;
         float mTimer = 0;
         float mLastShot = 0;
+        public int mHealth = 100;
 
         public enum ePlayerState
         {
@@ -239,6 +240,9 @@ namespace Love_and_Hate
         //public override void Draw(GameTime gameTime)
         public override void DrawSprite(GameTime gameTime)
         {
+            if (mHealth <= 0)
+                return;
+
             if (IsMerged && !Player.IsThisPlayerCaptain(this) )
                 return;
 
@@ -300,6 +304,9 @@ namespace Love_and_Hate
         {
             float mls = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
             mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (mHealth <= 0)
+                return;
 
         	if (!bInitialized)
             {
@@ -460,7 +467,7 @@ namespace Love_and_Hate
 
             foreach (Enemy e in Program.Instance.mEnemies)
             {
-                if (e.mOwner == null)
+                if (e.mOwner != this)
                 {
                     if (CheckForCollision(e))
                     {
@@ -482,13 +489,14 @@ namespace Love_and_Hate
                             e.Destroy();
                             destroy.Add(e);
                             */
-                            if (e.mState == Enemy.eEnemyState.FLOCK)
+                            if (e.mState == Enemy.eEnemyState.FLOCK && e.mOwner == null)
                             {
                                 e.SetOwned(this);
                                 OwnEnemy(e);
                             }
-                            else if (e.mState == Enemy.eEnemyState.FIRE)
+                            else
                             {
+                                DamageMe();
                                 Program.Instance.DestroyEnemy(e);
                             }
 
@@ -817,6 +825,23 @@ namespace Love_and_Hate
         {
             if(mEnemiesOwned.Contains(e))
                 mEnemiesOwned.Remove(e);
+        }
+
+        public void DamageMe()
+        {
+            mHealth--;
+
+            if (mHealth <= 0)
+            {
+                while(mEnemiesOwned.Count > 0)
+                {
+                    Enemy e = mEnemiesOwned[0];
+                    mOwnedCount--;
+                    UnOwnEnemy(e);
+                    e.mOwner = null;
+
+                }
+            }
         }
 
         public void ResetPosition()
