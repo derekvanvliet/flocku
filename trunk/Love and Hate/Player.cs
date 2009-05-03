@@ -20,6 +20,7 @@ namespace Love_and_Hate
         float mLastShot = 0;
         public int mHealth = Config.Instance.GetAsInt("PlayerHealth");
         public Vector2 mPOI;
+        public Vector2 mPOIOffset = new Vector2(0, 35);
 
         public enum ePlayerState
         {
@@ -713,21 +714,22 @@ namespace Love_and_Hate
             Vector2 firedir = new Vector2(state.ThumbSticks.Right.X, state.ThumbSticks.Right.Y);
             if (firedir.Length() != 0)
             {
-                mFiring = true;
                 if (GamePad.GetState(m_id).Triggers.Right > 0)
                 {
+                    mFiring = false;
                     Vector2 defenddir = firedir;
                     defenddir.Y = -defenddir.Y;
-                    mPOI = mPosition + (defenddir * 100);
+                    mPOI = mPosition + mPOIOffset + (defenddir * 100);
                 }
                 else
                 {
-                    mPOI = mPosition + new Vector2(0, 48);
+                    mFiring = true;
+                    mPOI = mPosition + mPOIOffset;
                 }
             }
             else
             {
-                mPOI = mPosition + new Vector2(0,48);
+                mPOI = mPosition + mPOIOffset;
                 mLastShot = 0;
                 mFiring = false;
             }
