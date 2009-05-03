@@ -203,5 +203,14 @@ namespace Love_and_Hate
         {
             Game.Components.Remove(this);
         }
+
+        // Checks if a value is within a specified range +/- of zero
+        public bool IsValueInRange(float val, float range)
+        {
+            if (val > -range && val < range)
+                return true;
+
+            return false;
+        }
     }
 }
