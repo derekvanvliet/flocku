@@ -48,6 +48,7 @@ namespace Love_and_Hate
         public Vector2 mCurrentPointOfInterest;
         public float mLastPOIUpdateTime;
         public SpriteBatch mSpriteBatch;
+        List<Enemy> mDestroyEnemies = new List<Enemy>();
 
         public Game1()
         {
@@ -290,6 +291,13 @@ namespace Love_and_Hate
                 {
                     GetNewPointOfInterest();
                 }
+
+                foreach (Enemy e in mDestroyEnemies)
+                {
+                    Program.Instance.mEnemies.Remove(e);
+                }
+
+                mDestroyEnemies.Clear();
             }
             else
             {
@@ -562,5 +570,10 @@ namespace Love_and_Hate
             mLastPOIUpdateTime = mTimer;
         }
 
+        public void DestroyEnemy(Enemy e)
+        {
+            e.Destroy();
+            mDestroyEnemies.Add(e);
+        }
     }
 }

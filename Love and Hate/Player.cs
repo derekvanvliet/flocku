@@ -14,6 +14,10 @@ namespace Love_and_Hate
         public bool bInitialized = false;
         private bool mIsUsingKeyboard = false;
         public int mOwnedCount = 0;
+        List<Enemy> mEnemiesOwned = new List<Enemy>();
+        bool mFiring = false;
+        float mTimer = 0;
+        float mLastShot = 0;
 
         public enum ePlayerState
         {
@@ -295,6 +299,7 @@ namespace Love_and_Hate
         public override void Update(GameTime gameTime)
         {
             float mls = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
+            mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
         	if (!bInitialized)
             {
@@ -455,9 +460,8 @@ namespace Love_and_Hate
 
             foreach (Enemy e in Program.Instance.mEnemies)
             {
-                if (e.mOwner != this)
+                if (e.mOwner == null)
                 {
-
                     if (CheckForCollision(e))
                     {
                         if (e.PixelWidth < this.PixelWidth)
@@ -478,7 +482,16 @@ namespace Love_and_Hate
                             e.Destroy();
                             destroy.Add(e);
                             */
-                            e.SetOwned(this);
+                            if (e.mState == Enemy.eEnemyState.FLOCK)
+                            {
+                                e.SetOwned(this);
+                                OwnEnemy(e);
+                            }
+                            else if (e.mState == Enemy.eEnemyState.FIRE)
+                            {
+                                Program.Instance.DestroyEnemy(e);
+                            }
+
                             Vector2 pos = mPosition;
 
                             /*
@@ -596,6 +609,32 @@ namespace Love_and_Hate
 
             this.mVelocity.X += mls * (state.ThumbSticks.Left.X*1000);
             this.mVelocity.Y += mls * (-state.ThumbSticks.Left.Y*1000);
+
+            state.ThumbSticks.Right.Normalize();
+            Vector2 firedir = new Vector2(state.ThumbSticks.Right.X, state.ThumbSticks.Right.Y);
+            if (firedir.Length() != 0)
+            {
+                mFiring = true;
+            }
+            else
+            {
+                mFiring = false;
+            }
+
+            if (mFiring)
+            {
+                if (mTimer - mLastShot > 100)
+                {
+                    mLastShot = mTimer;
+                    if (mEnemiesOwned.Count > 0)
+                    {
+                        /*
+                        mEnemiesOwned[0].Fire(firedir);
+                        UnOwnEnemy(mEnemiesOwned[0]);
+                        */
+                    }
+                }
+            }
 
             Vector2 drag2 = new Vector2(-mVelocity.X, -mVelocity.Y);
             if (drag2.Length() != 0)
@@ -751,6 +790,17 @@ namespace Love_and_Hate
 
             //    mBounds.Radius = Radius;
             //}
+        }
+
+        public void OwnEnemy(Enemy e)
+        {
+            mEnemiesOwned.Add(e);
+        }
+
+        public void UnOwnEnemy(Enemy e)
+        {
+            if(mEnemiesOwned.Contains(e))
+                mEnemiesOwned.Remove(e);
         }
 
         public void ResetPosition()
