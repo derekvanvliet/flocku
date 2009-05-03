@@ -585,174 +585,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="player03\idle_down\idledown0000.png">
-      <Name>idledown0000</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_down\idledown0001.png">
-      <Name>idledown0001</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_down\idledown0002.png">
-      <Name>idledown0002</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_down\idledown0003.png">
-      <Name>idledown0003</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_down\idledown0004.png">
-      <Name>idledown0004</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_down\idledown0005.png">
-      <Name>idledown0005</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_down\idledown0006.png">
-      <Name>idledown0006</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_down\idledown0007.png">
-      <Name>idledown0007</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="player03\idle_up\idleup0000.png">
-      <Name>idleup0000</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_up\idleup0001.png">
-      <Name>idleup0001</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_up\idleup0002.png">
-      <Name>idleup0002</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_up\idleup0003.png">
-      <Name>idleup0003</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_up\idleup0004.png">
-      <Name>idleup0004</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_up\idleup0005.png">
-      <Name>idleup0005</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_up\idleup0006.png">
-      <Name>idleup0006</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\idle_up\idleup0007.png">
-      <Name>idleup0007</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="player03\run_down\rundown0000.png">
-      <Name>rundown0000</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_down\rundown0001.png">
-      <Name>rundown0001</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_down\rundown0002.png">
-      <Name>rundown0002</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_down\rundown0003.png">
-      <Name>rundown0003</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_down\rundown0004.png">
-      <Name>rundown0004</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_down\rundown0005.png">
-      <Name>rundown0005</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_down\rundown0006.png">
-      <Name>rundown0006</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_down\rundown0007.png">
-      <Name>rundown0007</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="player03\run_up\runup0000.png">
-      <Name>runup0000</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_up\runup0001.png">
-      <Name>runup0001</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_up\runup0002.png">
-      <Name>runup0002</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_up\runup0003.png">
-      <Name>runup0003</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_up\runup0004.png">
-      <Name>runup0004</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_up\runup0005.png">
-      <Name>runup0005</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_up\runup0006.png">
-      <Name>runup0006</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="player03\run_up\runup0007.png">
-      <Name>runup0007</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="player01\flock\idle_down\fl_liz_idle_down0002.png">
       <Name>fl_liz_idle_down0002</Name>
       <Importer>TextureImporter</Importer>
@@ -911,30 +743,972 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="powerup_burst.png">
-      <Name>powerup_burst</Name>
+    <Compile Include="player04\run_down\bird_run_down0000.png">
+      <Name>bird_run_down0000</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="powerup_health.png">
-      <Name>powerup_health</Name>
+    <Compile Include="player04\run_down\bird_run_down0001.png">
+      <Name>bird_run_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_down\bird_run_down0002.png">
+      <Name>bird_run_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_down\bird_run_down0003.png">
+      <Name>bird_run_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_down\bird_run_down0004.png">
+      <Name>bird_run_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_down\bird_run_down0005.png">
+      <Name>bird_run_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_down\bird_run_down0006.png">
+      <Name>bird_run_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_down\bird_run_down0007.png">
+      <Name>bird_run_down0007</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="powerup_burst_icon.png">
-      <Name>powerup_burst_icon</Name>
+    <Compile Include="player04\run_up\bird_run_up0000.png">
+      <Name>bird_run_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_up\bird_run_up0001.png">
+      <Name>bird_run_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_up\bird_run_up0002.png">
+      <Name>bird_run_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_up\bird_run_up0003.png">
+      <Name>bird_run_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_up\bird_run_up0004.png">
+      <Name>bird_run_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_up\bird_run_up0005.png">
+      <Name>bird_run_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_up\bird_run_up0006.png">
+      <Name>bird_run_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\run_up\bird_run_up0007.png">
+      <Name>bird_run_up0007</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="heart.png">
-      <Name>heart</Name>
+    <Compile Include="player04\idle_down\bird_idle_down0000.png">
+      <Name>bird_idle_down0000</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="player04\idle_down\bird_idle_down0001.png">
+      <Name>bird_idle_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_down\bird_idle_down0002.png">
+      <Name>bird_idle_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_down\bird_idle_down0003.png">
+      <Name>bird_idle_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_down\bird_idle_down0004.png">
+      <Name>bird_idle_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_down\bird_idle_down0005.png">
+      <Name>bird_idle_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_down\bird_idle_down0006.png">
+      <Name>bird_idle_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_down\bird_idle_down0007.png">
+      <Name>bird_idle_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player04\idle_up\bird_idle_up0000.png">
+      <Name>bird_idle_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_up\bird_idle_up0001.png">
+      <Name>bird_idle_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_up\bird_idle_up0002.png">
+      <Name>bird_idle_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_up\bird_idle_up0003.png">
+      <Name>bird_idle_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_up\bird_idle_up0004.png">
+      <Name>bird_idle_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_up\bird_idle_up0005.png">
+      <Name>bird_idle_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_up\bird_idle_up0006.png">
+      <Name>bird_idle_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\idle_up\bird_idle_up0007.png">
+      <Name>bird_idle_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0000.png">
+      <Name>fl_bird_run_down0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0001.png">
+      <Name>fl_bird_run_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0002.png">
+      <Name>fl_bird_run_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0003.png">
+      <Name>fl_bird_run_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0004.png">
+      <Name>fl_bird_run_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0005.png">
+      <Name>fl_bird_run_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0006.png">
+      <Name>fl_bird_run_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_down\fl_bird_run_down0007.png">
+      <Name>fl_bird_run_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0000.png">
+      <Name>fl_bird_run_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0001.png">
+      <Name>fl_bird_run_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0002.png">
+      <Name>fl_bird_run_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0003.png">
+      <Name>fl_bird_run_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0004.png">
+      <Name>fl_bird_run_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0005.png">
+      <Name>fl_bird_run_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0006.png">
+      <Name>fl_bird_run_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\flock\run_up\fl_bird_run_up0007.png">
+      <Name>fl_bird_run_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0000.png">
+      <Name>fl_mnk_idle_down0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0001.png">
+      <Name>fl_mnk_idle_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0002.png">
+      <Name>fl_mnk_idle_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0003.png">
+      <Name>fl_mnk_idle_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0004.png">
+      <Name>fl_mnk_idle_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0005.png">
+      <Name>fl_mnk_idle_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0006.png">
+      <Name>fl_mnk_idle_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_down\fl_mnk_idle_down0007.png">
+      <Name>fl_mnk_idle_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0000.png">
+      <Name>fl_mnk_idle_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0001.png">
+      <Name>fl_mnk_idle_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0002.png">
+      <Name>fl_mnk_idle_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0003.png">
+      <Name>fl_mnk_idle_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0004.png">
+      <Name>fl_mnk_idle_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0005.png">
+      <Name>fl_mnk_idle_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0006.png">
+      <Name>fl_mnk_idle_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\idle_up\fl_mnk_idle_up0007.png">
+      <Name>fl_mnk_idle_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0000.png">
+      <Name>fl_mnk_run_down0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0001.png">
+      <Name>fl_mnk_run_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0002.png">
+      <Name>fl_mnk_run_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0003.png">
+      <Name>fl_mnk_run_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0004.png">
+      <Name>fl_mnk_run_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0005.png">
+      <Name>fl_mnk_run_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0006.png">
+      <Name>fl_mnk_run_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_down\fl_mnk_run_down0007.png">
+      <Name>fl_mnk_run_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0000.png">
+      <Name>fl_mnk_run_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0001.png">
+      <Name>fl_mnk_run_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0002.png">
+      <Name>fl_mnk_run_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0003.png">
+      <Name>fl_mnk_run_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0004.png">
+      <Name>fl_mnk_run_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0005.png">
+      <Name>fl_mnk_run_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0006.png">
+      <Name>fl_mnk_run_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\flock\run_up\fl_mnk_run_up0007.png">
+      <Name>fl_mnk_run_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\idle_down\pig_idle_down0000.png">
+      <Name>pig_idle_down0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_down\pig_idle_down0001.png">
+      <Name>pig_idle_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_down\pig_idle_down0002.png">
+      <Name>pig_idle_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_down\pig_idle_down0003.png">
+      <Name>pig_idle_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_down\pig_idle_down0004.png">
+      <Name>pig_idle_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_down\pig_idle_down0005.png">
+      <Name>pig_idle_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_down\pig_idle_down0006.png">
+      <Name>pig_idle_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_down\pig_idle_down0007.png">
+      <Name>pig_idle_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\idle_up\pig_idle_up0000.png">
+      <Name>pig_idle_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_up\pig_idle_up0001.png">
+      <Name>pig_idle_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_up\pig_idle_up0002.png">
+      <Name>pig_idle_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_up\pig_idle_up0003.png">
+      <Name>pig_idle_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_up\pig_idle_up0004.png">
+      <Name>pig_idle_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_up\pig_idle_up0005.png">
+      <Name>pig_idle_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_up\pig_idle_up0006.png">
+      <Name>pig_idle_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\idle_up\pig_idle_up0007.png">
+      <Name>pig_idle_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\run_down\pig_run_down0000.png">
+      <Name>pig_run_down0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_down\pig_run_down0001.png">
+      <Name>pig_run_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_down\pig_run_down0002.png">
+      <Name>pig_run_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_down\pig_run_down0003.png">
+      <Name>pig_run_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_down\pig_run_down0004.png">
+      <Name>pig_run_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_down\pig_run_down0005.png">
+      <Name>pig_run_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_down\pig_run_down0006.png">
+      <Name>pig_run_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_down\pig_run_down0007.png">
+      <Name>pig_run_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\run_up\pig_run_up0000.png">
+      <Name>pig_run_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_up\pig_run_up0001.png">
+      <Name>pig_run_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_up\pig_run_up0002.png">
+      <Name>pig_run_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_up\pig_run_up0003.png">
+      <Name>pig_run_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_up\pig_run_up0004.png">
+      <Name>pig_run_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_up\pig_run_up0005.png">
+      <Name>pig_run_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_up\pig_run_up0006.png">
+      <Name>pig_run_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\run_up\pig_run_up0007.png">
+      <Name>pig_run_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0000.png">
+      <Name>fl_pig_run_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0001.png">
+      <Name>fl_pig_run_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0002.png">
+      <Name>fl_pig_run_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0003.png">
+      <Name>fl_pig_run_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0004.png">
+      <Name>fl_pig_run_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0005.png">
+      <Name>fl_pig_run_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0006.png">
+      <Name>fl_pig_run_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_up\fl_pig_run_up0007.png">
+      <Name>fl_pig_run_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0000.png">
+      <Name>fl_pig_run_down0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0001.png">
+      <Name>fl_pig_run_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0002.png">
+      <Name>fl_pig_run_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0003.png">
+      <Name>fl_pig_run_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0004.png">
+      <Name>fl_pig_run_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0005.png">
+      <Name>fl_pig_run_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0006.png">
+      <Name>fl_pig_run_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\run_down\fl_pig_run_down0007.png">
+      <Name>fl_pig_run_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0000.png">
+      <Name>fl_pig_idle_down0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0001.png">
+      <Name>fl_pig_idle_down0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0002.png">
+      <Name>fl_pig_idle_down0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0003.png">
+      <Name>fl_pig_idle_down0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0004.png">
+      <Name>fl_pig_idle_down0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0005.png">
+      <Name>fl_pig_idle_down0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0006.png">
+      <Name>fl_pig_idle_down0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_down\fl_pig_idle_down0007.png">
+      <Name>fl_pig_idle_down0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0000.png">
+      <Name>fl_pig_idle_up0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0001.png">
+      <Name>fl_pig_idle_up0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0002.png">
+      <Name>fl_pig_idle_up0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0003.png">
+      <Name>fl_pig_idle_up0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0004.png">
+      <Name>fl_pig_idle_up0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0005.png">
+      <Name>fl_pig_idle_up0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0006.png">
+      <Name>fl_pig_idle_up0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\flock\idle_up\fl_pig_idle_up0007.png">
+      <Name>fl_pig_idle_up0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="purple_gubah\purp_run0000.png">
+      <Name>purp_run0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="purple_gubah\purp_run0001.png">
+      <Name>purp_run0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="purple_gubah\purp_run0002.png">
+      <Name>purp_run0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="purple_gubah\purp_run0003.png">
+      <Name>purp_run0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="purple_gubah\purp_run0004.png">
+      <Name>purp_run0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="purple_gubah\purp_run0005.png">
+      <Name>purp_run0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="purple_gubah\purp_run0006.png">
+      <Name>purp_run0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="purple_gubah\purp_run0007.png">
+      <Name>purp_run0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player04\death\bird_die0000.png">
+      <Name>bird_die0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\death\bird_die0001.png">
+      <Name>bird_die0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\death\bird_die0002.png">
+      <Name>bird_die0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\death\bird_die0003.png">
+      <Name>bird_die0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\death\bird_die0004.png">
+      <Name>bird_die0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\death\bird_die0005.png">
+      <Name>bird_die0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\death\bird_die0006.png">
+      <Name>bird_die0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player04\death\bird_die0007.png">
+      <Name>bird_die0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player01\death\liz_die0000.png">
+      <Name>liz_die0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player01\death\liz_die0001.png">
+      <Name>liz_die0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player01\death\liz_die0002.png">
+      <Name>liz_die0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player01\death\liz_die0003.png">
+      <Name>liz_die0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player01\death\liz_die0004.png">
+      <Name>liz_die0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player01\death\liz_die0005.png">
+      <Name>liz_die0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player01\death\liz_die0006.png">
+      <Name>liz_die0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player01\death\liz_die0007.png">
+      <Name>liz_die0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player02\death\monkey_die0000.png">
+      <Name>monkey_die0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\death\monkey_die0001.png">
+      <Name>monkey_die0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\death\monkey_die0002.png">
+      <Name>monkey_die0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\death\monkey_die0003.png">
+      <Name>monkey_die0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\death\monkey_die0004.png">
+      <Name>monkey_die0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\death\monkey_die0005.png">
+      <Name>monkey_die0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\death\monkey_die0006.png">
+      <Name>monkey_die0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player02\death\monkey_die0007.png">
+      <Name>monkey_die0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="player03\death\pig_die0000.png">
+      <Name>pig_die0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\death\pig_die0001.png">
+      <Name>pig_die0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\death\pig_die0002.png">
+      <Name>pig_die0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\death\pig_die0003.png">
+      <Name>pig_die0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\death\pig_die0004.png">
+      <Name>pig_die0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\death\pig_die0005.png">
+      <Name>pig_die0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\death\pig_die0006.png">
+      <Name>pig_die0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="player03\death\pig_die0007.png">
+      <Name>pig_die0007</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="p1_head.png">
       <Name>p1_head</Name>
       <Importer>TextureImporter</Importer>
@@ -952,6 +1726,13 @@
     </Compile>
     <Compile Include="p4_head.png">
       <Name>p4_head</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="heart.png">
+      <Name>heart</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -997,8 +1778,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="powerup_health\pickup_heart_0000.png">
       <Name>pickup_heart_0000</Name>
       <Importer>TextureImporter</Importer>
@@ -1036,10 +1815,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="player04\idle_down\" />
-    <Folder Include="player04\idle_up\" />
-    <Folder Include="player04\run_down\" />
-    <Folder Include="player04\run_up\" />
+    <Compile Include="powerup_burst.png">
+      <Name>powerup_burst</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_burst_icon.png">
+      <Name>powerup_burst_icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_health.png">
+      <Name>powerup_health</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="player04\flock\idle_down\" />
+    <Folder Include="player04\flock\idle_up\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v3.0\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
