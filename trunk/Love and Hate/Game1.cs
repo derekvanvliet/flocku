@@ -49,6 +49,7 @@ namespace Love_and_Hate
         public float mLastPOIUpdateTime;
         public SpriteBatch mSpriteBatch;
         List<Enemy> mDestroyEnemies = new List<Enemy>();
+        public int mAlivePlayerCount;
 
         public Game1()
         {
@@ -178,8 +179,6 @@ namespace Love_and_Hate
                 if (this.mGameState == GameState.GameOver)
                 {
                     rnum1.DrawSprite(gameTime);
-                    rnum2.DrawSprite(gameTime);
-                    rnum3.DrawSprite(gameTime);
 
                     if (rp1 != null)
                         rp1.DrawSprite(gameTime);
@@ -251,6 +250,8 @@ namespace Love_and_Hate
                 if (m_GamePlayers.Count == 1)
                     m_GamePlayers.Add(new Player(this, PlayerIndex.Two, true));
 
+                mAlivePlayerCount = m_GamePlayers.Count;
+
                 mGameState = GameState.Game;
 
                 mGameStarted = gameTime.TotalGameTime.Milliseconds;
@@ -280,7 +281,7 @@ namespace Love_and_Hate
         {
             mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (1 == 1)
+            if (mAlivePlayerCount > 1)
             {
                 //UpdateTimeText();
 
@@ -308,13 +309,9 @@ namespace Love_and_Hate
                 int height = Config.Instance.GetAsInt("ScreenHeight");
 
                 rnum1 = new RankFirstNum(this, this.Content);
-                rnum2 = new RankSecondNum(this, this.Content);
-                rnum3 = new RankThirdNum(this, this.Content);
                 pressA = new PressA(this, this.Content);
 
                 rnum1.mPosition = new Vector2(width / 2 - 64, height / 2 - 64 - 32);
-                rnum2.mPosition = rnum1.mPosition + new Vector2(0, 128);
-                rnum3.mPosition = rnum2.mPosition + new Vector2(0, 128);
                 pressA.mPosition = new Vector2(width - 128, 128);
 
                 List<Player> lp = new List<Player>();
@@ -327,9 +324,12 @@ namespace Love_and_Hate
 
                 foreach (Player p in GamePlayers)
                 {
-                    lp.Add(p);
+                    if (p.mHealth > 0)
+                    {
+                        sorted.Add(p);
+                    }
                 }
-
+                /*
                 while (lp.Count > 0)
                 {
                     Player largest = null;
@@ -349,6 +349,7 @@ namespace Love_and_Hate
                     sorted.Add(largest);
                     lp.Remove(largest);
                 }
+                 */
                 
                 for (int i = 0; i < sorted.Count; i++)
                 {
@@ -384,6 +385,8 @@ namespace Love_and_Hate
                                 break;
                             }
                     }
+
+                    break;
                 }
 
                 mGameState = GameState.GameOver;

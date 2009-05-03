@@ -29,7 +29,7 @@ namespace Love_and_Hate
 
         SpriteBatch sb;
 
-        public AnimatedSprite(Game game, Vector2 origin, float rotation, float scale, float depth, string asset, int frameCount, int framesPerSec)
+        public AnimatedSprite(Game game, Vector2 origin, float rotation, float scale, float depth, string asset, int framesPerSec)
         {
             this.GameObj = game;
             this.Origin = origin;
@@ -38,46 +38,25 @@ namespace Love_and_Hate
             this.Depth = depth;
 
             this.Asset        = asset;
-            this.FrameCount   = frameCount;
+            this.FrameCount   = 0;
             this.FramesPerSec = framesPerSec;
 
-            //LoadContent();
-            Load(game.Content, Asset, FrameCount, FramesPerSec);
+            Load(game.Content, Asset, FramesPerSec);
         }
 
-        //protected override void LoadContent()
-        //{
-            
-
-        //    Load(Game.Content, Asset, FrameCount, FramesPerSec);
-
-        //    base.LoadContent();
-        //}
-
-        public void Load(ContentManager content, string asset, int frameCount, int framesPerSec)
+        public void Load(ContentManager content, string asset, int framesPerSec)
         {
             sb = Program.Instance.mSpriteBatch;
 
-            framecount = frameCount;
-
-            for (int i = 0; i < frameCount; i++)
+            String sFullAssetName = content.RootDirectory + asset;
+                
+            // Increase frame count based on number of files in directory
+            foreach (String s in Directory.GetFiles(sFullAssetName, "*.*", SearchOption.TopDirectoryOnly))
             {
-                String sFullAssetName = asset + "_00";
-
-                if ( i < 10 )
-                {
-                    sFullAssetName += "0";
-                    sFullAssetName += i;
-                }
-                else
-                    sFullAssetName += i;        
-
-                sFullAssetName = GameObj.Content.RootDirectory + sFullAssetName;
-
-                FrameTextures.Add(content.Load<Texture2D>(sFullAssetName));
+                FrameTextures.Add(content.Load<Texture2D>(Path.Combine(sFullAssetName, Path.GetFileNameWithoutExtension(s))));
+                this.framecount++;
             }
             
-            //myTexture = content.Load<Texture2D>(asset);
             TimePerFrame = (float)1 / framesPerSec;
             Frame = 0;
             TotalElapsed = 0;

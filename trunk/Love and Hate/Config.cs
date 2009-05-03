@@ -25,6 +25,7 @@ namespace Love_and_Hate
             mProps.Add("ScreenWidth","1280");
             mProps.Add("ScreenHeight","800");
             mProps.Add("TimeLimit","600");
+            mProps.Add("PlayerHealth", "100");
             mProps.Add("Debug", "false");    
         }
 

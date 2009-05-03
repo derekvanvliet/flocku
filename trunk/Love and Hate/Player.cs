@@ -18,7 +18,8 @@ namespace Love_and_Hate
         bool mFiring = false;
         float mTimer = 0;
         float mLastShot = 0;
-        public int mHealth = 100;
+        public int mHealth = Config.Instance.GetAsInt("PlayerHealth");
+        public Vector2 mPOI;
 
         public enum ePlayerState
         {
@@ -79,8 +80,11 @@ namespace Love_and_Hate
             }
         }
 
-        float moveX = 0;
-        float moveY = 0;
+        float moveX = 0.0f;
+        float moveY = 0.0f;
+
+        float lastMovedX = 0.0f;
+        float lastMovedY = 0.0f;
 
         // Merging properties
         private bool m_bIsMerged = false;
@@ -147,8 +151,11 @@ namespace Love_and_Hate
             }
         }
 
-        AnimatedSprite m_idleFrontAnim;
-        AnimatedSprite m_runAnim;
+        AnimatedSprite m_idleFrontUpAnim;
+        AnimatedSprite m_idleFrontDownAnim;
+        
+        AnimatedSprite m_runUpAnim;
+        AnimatedSprite m_runDownAnim;
         
         static AnimatedSprite m_mergeMonsterAnim;
 
@@ -171,32 +178,40 @@ namespace Love_and_Hate
             {
                 case PlayerIndex.One:
                     {
-                        this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle\\p1_idle", 8, iPlayerFrameRate);
-                        this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run\\p1_run", 8, iPlayerFrameRate);
+                        this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle_up", iPlayerFrameRate);
+                        this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle_up", iPlayerFrameRate);
+                        this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_up", iPlayerFrameRate);
+                        this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_down", iPlayerFrameRate);
                         break;
                     }
                 case PlayerIndex.Two:
                     {
-                        this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\idle\\p2_idle", 8, iPlayerFrameRate);
-                        this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run\\p2_run", 8, iPlayerFrameRate);
+                        this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\idle_up", iPlayerFrameRate);
+                        this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\idle_down", iPlayerFrameRate);
+                        this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_up", iPlayerFrameRate);
+                        this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_down", iPlayerFrameRate);
                         break;
                     }
                 case PlayerIndex.Three:
                     {
-                        this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\idle\\p3_idle", 8, iPlayerFrameRate);
-                        this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run\\p3_run", 8, iPlayerFrameRate);
+                        this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\idle_up", iPlayerFrameRate);
+                        this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\idle_down", iPlayerFrameRate);
+                        this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_up", iPlayerFrameRate);
+                        this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_down", iPlayerFrameRate);
                         break;
                     }
                 case PlayerIndex.Four:
                     {
-                        this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\idle\\p4_idle", 8, iPlayerFrameRate);
-                        this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run\\p4_run", 8, iPlayerFrameRate);
+                        this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\idle_up",iPlayerFrameRate);
+                        this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\idle_down", iPlayerFrameRate);
+                        this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_up", iPlayerFrameRate);
+                        this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_down", iPlayerFrameRate);
                         break;
                     }
             }
 
             if (Player.m_mergeMonsterAnim == null)
-                Player.m_mergeMonsterAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\mergemonster\\mm_run", 8, iPlayerFrameRate);                
+                Player.m_mergeMonsterAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\mergemonster", iPlayerFrameRate);                
         }
 
         protected override void LoadContent()
@@ -211,25 +226,25 @@ namespace Love_and_Hate
             //{
             //    case PlayerIndex.One:
             //        {
-            //            this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle\\p1_idle", 8, iPlayerFrameRate);
+            //            this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle\\p1_idle", 8, iPlayerFrameRate);
             //            this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run\\p1_run", 8, iPlayerFrameRate);
             //            break;
             //        }
             //    case PlayerIndex.Two:
             //        {
-            //            this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\IdleFront\\p2_idle", 8, iPlayerFrameRate);
+            //            this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\IdleFront\\p2_idle", 8, iPlayerFrameRate);
             //            this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\RunLeft\\p2_run", 8, iPlayerFrameRate);
             //            break;
             //        }
             //    case PlayerIndex.Three:
             //        {
-            //            this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\IdleFront\\p3_idle", 8, iPlayerFrameRate);
+            //            this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\IdleFront\\p3_idle", 8, iPlayerFrameRate);
             //            this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\RunLeft\\p3_run", 8, iPlayerFrameRate);
             //            break;
             //        }
             //    case PlayerIndex.Four:
             //        {
-            //            this.m_idleFrontAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\IdleFront\\p4_idle", 8, iPlayerFrameRate);
+            //            this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\IdleFront\\p4_idle", 8, iPlayerFrameRate);
             //            this.m_runAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player\\RunLeft\\p4_run", 8, iPlayerFrameRate);
             //            break;
             //        }
@@ -249,39 +264,110 @@ namespace Love_and_Hate
             switch (this.PlayerState)
             {
                 case ePlayerState.IDLE:
-                    this.m_idleFrontAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    if (lastMovedX > 0 && lastMovedY > 0)
+                    {
+                        this.m_idleFrontUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    }
+                    else if (lastMovedX < 0 && lastMovedY >= 0)
+                    {
+                        this.m_idleFrontUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    }
+                    else if (lastMovedX > 0 && lastMovedY < 0)
+                    {
+                        this.m_idleFrontDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    }
+                    else if (lastMovedX < 0 && lastMovedY < 0)
+                    {
+                        this.m_idleFrontDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                    }
+                    else
+                        this.m_idleFrontDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+
                     break;
 
                 case ePlayerState.RUN:
                     {
-                        if (IsMerged)
-                        {
-                            Player.m_mergeMonsterAnim.Scale = 2.0f;
+                        //if (IsMerged)
+                        //{
+                        //    //Player.m_mergeMonsterAnim.Scale = 2.0f;
 
-                            if (mVelocity.X > 10)
-                                Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
-                            else if (mVelocity.X < -10)
-                                Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
-                            else if (mVelocity.Y > 10)
-                                Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
-                            else if (mVelocity.Y < -10)
-                                Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
-                            else
-                                Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
-                        }
-                        else
+                        //    //if (mVelocity.X > 10)
+                        //    //    Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        //    //else if (mVelocity.X < -10)
+                        //    //    Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        //    //else if (mVelocity.Y > 10)
+                        //    //    Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        //    //else if (mVelocity.Y < -10)
+                        //    //    Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        //    //else
+                        //    //    Player.m_mergeMonsterAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        //}
+                        //else
+                        //{
+
+
+                        if (mVelocity.X > 0.5 && IsValueInRange(mVelocity.Y, 0.5f))
                         {
-                            if (mVelocity.X > 10)
-                                this.m_runAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
-                            else if (mVelocity.X < -10)
-                                this.m_runAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
-                            else if (mVelocity.Y > 10)
-                                this.m_runAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
-                            else if (mVelocity.Y < -10)
-                                this.m_runAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
-                            else
-                                this.m_idleFrontAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                            this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
                         }
+                        else if (mVelocity.X < -0.5 && IsValueInRange(mVelocity.Y, 0.5f) )
+                        {
+                            this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        }
+
+                        else if (mVelocity.Y > 0.5 && IsValueInRange(mVelocity.X, 0.5f))
+                        {
+                            this.m_runDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        }
+                        else if (mVelocity.Y < -0.5 && IsValueInRange(mVelocity.X, 0.5f))
+                        {
+                            this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        }
+
+                        else if (mVelocity.X > 0.5 && mVelocity.Y > 0.5)
+                        {
+                            this.m_runDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        }
+                        else if (mVelocity.X > 0.5 && mVelocity.Y < -0.5)
+                        {
+                            this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        }
+                        else if (mVelocity.X < -0.5 && (mVelocity.Y > 0.5 || IsValueInRange(mVelocity.Y, 1.0f)))
+                        {
+                            this.m_runDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        }
+                        else if (mVelocity.X < -0.5 && mVelocity.Y < -0.5)
+                        {
+                            this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        }
+                        
+                        // Should never get to this state but just in case as opposed
+                        else
+                            this.m_idleFrontDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+
+                        //if (mVelocity.X > 10 && mVelocity.Y == 0)
+                        //{
+                        //    this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        //}
+                        //else if (mVelocity.X < -10 && mVelocity.Y == 0)
+                        //{
+                        //    this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        //}
+
+                        //else if (mVelocity.Y > 10 && mVelocity.X == 0)
+                        //{
+                        //    this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        //    this.m_runDownAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                        //}
+                        //else if (mVelocity.Y < -10 && mVelocity.X == 0)
+                        //{
+                        //    this.m_runUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        //}
+                        //else
+                        //{
+                        //    this.m_idleFrontUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+                        //}
+                        //}
 
                         break;
                     }
@@ -315,63 +401,63 @@ namespace Love_and_Hate
                 return;
             }
 
-            Vector2 mergedMoveDirection = new Vector2();
+            //Vector2 mergedMoveDirection = new Vector2();
 
-            if (this.IsMerged)
-            {
-                if (!Player.IsThisPlayerCaptain(this))
-                {
-                    base.Update(gameTime);
-                    return;
-                }
-                else
-                {
-                    if (m_PlayerMerges.ContainsKey(this.id))
-                    {
-                        // Check if someone is trying to break the merge which
-                        // anyone in the merge group is allowed to do
-                        if (m_PlayerMerges[this.id].IsAnyoneTryingToBreakTheMerge() || IsMergeBreakButtonPressed())
-                        {
-                            // If yes then this captain and its merge need to be removed from our 
-                            // merge list
-                            Player.RemoveMergeList(this.id);
+            //if (this.IsMerged)
+            //{
+            //    if (!Player.IsThisPlayerCaptain(this))
+            //    {
+            //        base.Update(gameTime);
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        if (m_PlayerMerges.ContainsKey(this.id))
+            //        {
+            //            // Check if someone is trying to break the merge which
+            //            // anyone in the merge group is allowed to do
+            //            if (m_PlayerMerges[this.id].IsAnyoneTryingToBreakTheMerge() || IsMergeBreakButtonPressed())
+            //            {
+            //                // If yes then this captain and its merge need to be removed from our 
+            //                // merge list
+            //                Player.RemoveMergeList(this.id);
 
-                            this.IsMerged = false;
+            //                this.IsMerged = false;
 
-                            this.Reset(mDefaultSize);
-                        }
-                        else
-                        {
-                            // Set state to always running.  Update the animation here!
-                            //
-                            this.PlayerState = ePlayerState.RUN;
-                            this.m_runAnim.Update(gameTime);
-                            Player.m_mergeMonsterAnim.Update(gameTime);
+            //                this.Reset(mDefaultSize);
+            //            }
+            //            else
+            //            {
+            //                // Set state to always running.  Update the animation here!
+            //                //
+            //                this.PlayerState = ePlayerState.RUN;
+            //                //this.m_runAnim.Update(gameTime);
+            //                //Player.m_mergeMonsterAnim.Update(gameTime);
 
-                            mergedMoveDirection = new Vector2();
-                            mergedMoveDirection = GetAvgDirectionForAllPlayers(this);
+            //                mergedMoveDirection = new Vector2();
+            //                mergedMoveDirection = GetAvgDirectionForAllPlayers(this);
 
-                            // There is always a speed movement applied when the players 
-                            // are merged
-                            //
-                            if (mergedMoveDirection.Length() == 0)
-                                mergedMoveDirection = new Vector2(1, 1);
+            //                // There is always a speed movement applied when the players 
+            //                // are merged
+            //                //
+            //                if (mergedMoveDirection.Length() == 0)
+            //                    mergedMoveDirection = new Vector2(1, 1);
 
-                            this.mVelocity.X = mls * (mergedMoveDirection.X * 800.0f);
-                            this.mVelocity.Y = mls * (mergedMoveDirection.Y * 800.0f);
+            //                this.mVelocity.X = mls * (mergedMoveDirection.X * 800.0f);
+            //                this.mVelocity.Y = mls * (mergedMoveDirection.Y * 800.0f);
 
-                            //mergedMoveDirection *= new Vector2(5, 5);
+            //                //mergedMoveDirection *= new Vector2(5, 5);
 
-                            this.mPositionX += this.mVelocity.X;// mergedMoveDirection.X;
-                            this.mPositionY += this.mVelocity.Y;//mergedMoveDirection.Y;
+            //                this.mPositionX += this.mVelocity.X;// mergedMoveDirection.X;
+            //                this.mPositionY += this.mVelocity.Y;//mergedMoveDirection.Y;
                             
-                            base.Update(gameTime);
+            //                base.Update(gameTime);
 
-                            return;
-                        }
-                    }
-                }
-            }
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
 
             // Check for collisions with other players
             foreach (Player p in Program.Instance.GamePlayers)
@@ -455,11 +541,13 @@ namespace Love_and_Hate
             switch(this.PlayerState)
             {
                 case ePlayerState.IDLE:
-                    this.m_idleFrontAnim.Update(gameTime);
+                    this.m_idleFrontUpAnim.Update(gameTime);
+                    this.m_idleFrontDownAnim.Update(gameTime);
                     break;
 
                 case ePlayerState.RUN:
-                    this.m_runAnim.Update(gameTime);
+                    this.m_runUpAnim.Update(gameTime);
+                    this.m_runDownAnim.Update(gameTime);
                     break;
             }         
           
@@ -516,8 +604,11 @@ namespace Love_and_Hate
                             this.SetBboxPos(mPosition);
 
 
-                            this.m_idleFrontAnim.Scale = mScale.X;
-                            this.m_runAnim.Scale = mScale.X;
+                            this.m_idleFrontUpAnim.Scale = mScale.X;
+                            this.m_idleFrontDownAnim.Scale = mScale.X;
+                            
+                            this.m_runUpAnim.Scale = mScale.X;
+                            this.m_runDownAnim.Scale = mScale.X;
 
                             Program.Instance.mEnemiesKilled++;
                             if (Program.Instance.mEnemiesKilled % 3 == 0)
@@ -623,9 +714,20 @@ namespace Love_and_Hate
             if (firedir.Length() != 0)
             {
                 mFiring = true;
+                if (GamePad.GetState(m_id).Triggers.Right > 0)
+                {
+                    Vector2 defenddir = firedir;
+                    defenddir.Y = -defenddir.Y;
+                    mPOI = mPosition + (defenddir * 100);
+                }
+                else
+                {
+                    mPOI = mPosition + new Vector2(0, 48);
+                }
             }
             else
             {
+                mPOI = mPosition + new Vector2(0,48);
                 mLastShot = 0;
                 mFiring = false;
             }
@@ -644,6 +746,7 @@ namespace Love_and_Hate
                     }
                 }
             }
+
 
             if (IsButtonPressed(GamePad.GetState(m_id).Buttons.A))
             {
@@ -685,6 +788,12 @@ namespace Love_and_Hate
                 mPositionY = Config.Instance.GetAsInt("ScreenHeight") - Radius;
             if (mPositionY - Radius < 0)
                 mPositionY = Radius;
+
+            if (moveX != 0)
+                lastMovedX = moveX;
+
+            if (moveY != 0)
+                lastMovedY = moveY;
 
             base.Update(gameTime);
         }
@@ -785,10 +894,11 @@ namespace Love_and_Hate
             }
             mScale.X = mPixelScale * newPixelWidth;
             mScale.Y = mScale.X;
-            if (m_idleFrontAnim != null)
+            if (m_idleFrontUpAnim != null)
             {
-                this.m_idleFrontAnim.Scale = mScale.X;
-                this.m_runAnim.Scale = mScale.X;
+                this.m_idleFrontUpAnim.Scale = mScale.X;
+                this.m_runUpAnim.Scale = mScale.X;
+                this.m_runDownAnim.Scale = mScale.X;
             }
             mMaxSpeed = 10000f / PixelWidth;
 
@@ -829,17 +939,21 @@ namespace Love_and_Hate
 
         public void DamageMe()
         {
-            mHealth--;
-
-            if (mHealth <= 0)
+            if (mHealth > 0)
             {
-                while(mEnemiesOwned.Count > 0)
-                {
-                    Enemy e = mEnemiesOwned[0];
-                    mOwnedCount--;
-                    UnOwnEnemy(e);
-                    e.mOwner = null;
+                mHealth--;
 
+                if (mHealth == 0)
+                {
+                    while (mEnemiesOwned.Count > 0)
+                    {
+                        Enemy e = mEnemiesOwned[0];
+                        mOwnedCount--;
+                        UnOwnEnemy(e);
+                        e.mOwner = null;
+                    }
+
+                    Program.Instance.mAlivePlayerCount--;
                 }
             }
         }

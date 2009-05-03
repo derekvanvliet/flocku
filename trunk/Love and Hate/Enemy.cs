@@ -111,11 +111,11 @@ namespace Love_and_Hate
             }
             int iPlayerFrameRate = Config.Instance.GetAsInt("PlayerFrameRate");
 
-            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player0\\enemyrunside", 1, iPlayerFrameRate);
-            mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player1\\enemyrunside", 1, iPlayerFrameRate);
-            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player2\\enemyrunside", 1, iPlayerFrameRate);
-            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player3\\enemyrunside", 1, iPlayerFrameRate);
-            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4\\enemyrunside", 1, iPlayerFrameRate);
+            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4", iPlayerFrameRate);
+            mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player01\\flock\\run_down", iPlayerFrameRate);
+            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player01\\flock\\run_down", iPlayerFrameRate);
+            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player01\\flock\\run_down", iPlayerFrameRate);
+            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4", iPlayerFrameRate);
         }
 
         public override void DrawSprite(GameTime gameTime)
@@ -202,7 +202,7 @@ namespace Love_and_Hate
                 // move towards nearest owner
                 if (mOwner != null)
                 {
-                    Vector2 dir = mOwner.mPosition - mPosition;
+                    Vector2 dir = mOwner.mPOI - mPosition;
                     dir.Normalize();
 
                     mVelocity = mVelocity + mls * (dir * mChaseStrength);
