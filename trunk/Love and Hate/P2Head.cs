@@ -24,6 +24,9 @@ namespace Love_and_Hate
         {
             base.LoadContent();
 
+            mScale.X = 0.5f;
+            mScale.Y = mScale.X;
+
             mPositionX = Config.Instance.GetAsInt("ScreenWidth") - PixelWidth/2;
             mPositionY = 0 + PixelHeight/2;
         }

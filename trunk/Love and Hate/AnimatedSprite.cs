@@ -20,7 +20,7 @@ namespace Love_and_Hate
         private float TotalElapsed;
         private bool Paused;
         private string Asset;
-        private int FrameCount;
+        //private int FrameCount;
         private int FramesPerSec;
 
         public float Rotation, Scale, Depth;
@@ -28,6 +28,14 @@ namespace Love_and_Hate
         public Game GameObj;
 
         SpriteBatch sb;
+
+        public enum eAnimationType
+        {
+            KILL,
+            INFINITE
+        }
+
+        public eAnimationType AnimationType { get; set; }
 
         public AnimatedSprite(Game game, Vector2 origin, float rotation, float scale, float depth, string asset, int framesPerSec)
         {
@@ -38,8 +46,9 @@ namespace Love_and_Hate
             this.Depth = depth;
 
             this.Asset        = asset;
-            this.FrameCount   = 0;
+            this.framecount   = 0;
             this.FramesPerSec = framesPerSec;
+            this.AnimationType = eAnimationType.INFINITE;
 
             Load(game.Content, Asset, FramesPerSec);
         }
@@ -73,10 +82,32 @@ namespace Love_and_Hate
 
             if (TotalElapsed > TimePerFrame)
             {
-                Frame++;
+                switch (AnimationType)
+                {
+                    case eAnimationType.KILL:
+                    {
+                        if (Frame < this.framecount - 1)
+                            Frame++;
+
+                        
+                        break;
+                    }
+
+                    case eAnimationType.INFINITE:
+                    {
+                        if (Frame < this.framecount - 1)
+                            Frame++;
+                        else
+                            Frame = 0;
+
+                        break;
+                    }
+                }
+
+                //Frame++;
                 
                 // Keep the Frame between 0 and the total frames, minus one.
-                Frame = Frame % framecount;
+                //Frame = Frame % framecount;
                 TotalElapsed -= TimePerFrame;
             }
         }

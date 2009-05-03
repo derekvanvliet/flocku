@@ -317,7 +317,7 @@ namespace Love_and_Hate
 
                 mDestroyPowerups.Clear();
 
-                if (mTimer - mLastPowerupTime > 10000)
+                if (mTimer - mLastPowerupTime > Config.Instance.GetAsInt("PowerupInterval"))
                 {
                     NewPowerup();
                 }
@@ -331,7 +331,7 @@ namespace Love_and_Hate
                 rnum1 = new RankFirstNum(this, this.Content);
                 pressA = new PressA(this, this.Content);
 
-                rnum1.mPosition = new Vector2(width / 2 - 64, height / 2 - 64 - 32);
+                rnum1.mPosition = new Vector2(width / 2, height / 2 + 128);
                 pressA.mPosition = new Vector2(width - 128, 128);
 
                 List<Player> lp = new List<Player>();
@@ -379,29 +379,30 @@ namespace Love_and_Hate
                         case PlayerIndex.One:
                             {
                                 rp1 = new RankP1(this, this.Content);
-                                rp1.mPositionX = positions[i].mPositionX + 128;
-                                rp1.mPositionY = positions[i].mPositionY;
+                                rp1.mPositionX = Config.Instance.GetAsInt("ScreenWidth") / 2;
+                                rp1.mPositionY = Config.Instance.GetAsInt("ScreenHeight") / 2 - 96;
+
                                 break;
                             }
                         case PlayerIndex.Two:
                             {
                                 rp2 = new RankP2(this, this.Content);
-                                rp2.mPositionX = positions[i].mPositionX + 128;
-                                rp2.mPositionY = positions[i].mPositionY;
+                                rp2.mPositionX = Config.Instance.GetAsInt("ScreenWidth") / 2;
+                                rp2.mPositionY = Config.Instance.GetAsInt("ScreenHeight") / 2 - 96;
                                 break;
                             }
                         case PlayerIndex.Three:
                             {
                                 rp3 = new RankP3(this, this.Content);
-                                rp3.mPositionX = positions[i].mPositionX + 128;
-                                rp3.mPositionY = positions[i].mPositionY;
+                                rp3.mPositionX = Config.Instance.GetAsInt("ScreenWidth") / 2;
+                                rp3.mPositionY = Config.Instance.GetAsInt("ScreenHeight") / 2 - 96;
                                 break;
                             }
                         case PlayerIndex.Four:
                             {
                                 rp4 = new RankP4(this, this.Content);
-                                rp4.mPositionX = positions[i].mPositionX + 128;
-                                rp4.mPositionY = positions[i].mPositionY;
+                                rp4.mPositionX = Config.Instance.GetAsInt("ScreenWidth") / 2;
+                                rp4.mPositionY = Config.Instance.GetAsInt("ScreenHeight") / 2 - 96;
                                 break;
                             }
                     }
