@@ -12,7 +12,9 @@ namespace Love_and_Hate
     {
         public float mMaxSpeed = 4000f;
         public float mChaseStrength = 500;
-        public float mAvoidStrength = 1000;
+        public float mAvoidPlayerStrength = 1000;
+        public float mAvoidEnemyStrength = 1000;
+        public float mFireStrength = 5000;
         public float mMinHelpless = 0.5f;
         public Vector2 mVelocity = new Vector2();
         public int mLevel = 0;
@@ -25,14 +27,15 @@ namespace Love_and_Hate
         public float mTimer;
         public float mOwnedTime;
         public float mOwnedDuration;
+        public Vector2 mFireDir;
 
         public enum eEnemyState
         {
-            ATTACK = 0,
-            RUN
+            FLOCK = 0,
+            FIRE
         }
 
-        private eEnemyState mState = eEnemyState.ATTACK;
+        public eEnemyState mState = eEnemyState.FLOCK;
 
         public eEnemyState EnemyState
         {
@@ -109,11 +112,11 @@ namespace Love_and_Hate
             }
             int iPlayerFrameRate = Config.Instance.GetAsInt("PlayerFrameRate");
 
-            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player0\\enemyrunside", 8, iPlayerFrameRate);
-            mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player1\\enemyrunside", 8, iPlayerFrameRate);
-            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player2\\enemyrunside", 8, iPlayerFrameRate);
-            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player3\\enemyrunside", 8, iPlayerFrameRate);
-            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4\\enemyrunside", 8, iPlayerFrameRate);
+            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player0\\enemyrunside", 1, iPlayerFrameRate);
+            mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player1\\enemyrunside", 1, iPlayerFrameRate);
+            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player2\\enemyrunside", 1, iPlayerFrameRate);
+            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player3\\enemyrunside", 1, iPlayerFrameRate);
+            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4\\enemyrunside", 1, iPlayerFrameRate);
         }
 
         public override void DrawSprite(GameTime gameTime)
@@ -180,98 +183,125 @@ namespace Love_and_Hate
 
             }
 
-            base.DrawSprite(gameTime);
+            //base.DrawSprite(gameTime);
         }
 
         public override void Update(GameTime gameTime)
         {
-            
             float mls = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
             mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            this.mAnimPlayer0.Update(gameTime);
-            this.mAnimPlayer1.Update(gameTime);
-            this.mAnimPlayer2.Update(gameTime);
-            this.mAnimPlayer3.Update(gameTime);
-            this.mAnimPlayer4.Update(gameTime);
-            
-            // move towards nearest owner
-            if (mOwner != null)
+            if (mState == eEnemyState.FLOCK)
             {
-                Vector2 dir = mOwner.mPosition - mPosition;
-                dir.Normalize();
 
-                mVelocity = mVelocity + mls * (dir * mChaseStrength);
-                EnemyState = eEnemyState.ATTACK;
+                this.mAnimPlayer0.Update(gameTime);
+                this.mAnimPlayer1.Update(gameTime);
+                this.mAnimPlayer2.Update(gameTime);
+                this.mAnimPlayer3.Update(gameTime);
+                this.mAnimPlayer4.Update(gameTime);
 
-                if (mTimer - mOwnedTime > mOwnedDuration)
+                // move towards nearest owner
+                if (mOwner != null)
                 {
-                    mOwner.mOwnedCount--;
-                    mOwner = null;
-                }
-            }
-            else
-            {
-                // no owner, so move towards current point of interest
-
-                Vector2 dir = Program.Instance.GetCurrentPointOfInterest() - mPosition;
-
-                if (dir.Length() > InterestRadius)
-                {
+                    Vector2 dir = mOwner.mPosition - mPosition;
                     dir.Normalize();
 
                     mVelocity = mVelocity + mls * (dir * mChaseStrength);
+
+                    if (mTimer - mOwnedTime > mOwnedDuration)
+                    {
+                        mOwner.mOwnedCount--;
+                        mOwner.UnOwnEnemy(this);
+                        mOwner = null;
+                    }
                 }
-                EnemyState = eEnemyState.RUN;
-            }
-
-            // move away from nearest predator
-            Player predator = GetNearestPredator();
-
-            if (predator != null)
-            {
-                Vector2 dir = mPosition - predator.mPosition;
-                if (dir.Length() - Radius - predator.Radius < InterestRadius)
+                else
                 {
-                    dir.Normalize();
+                    // no owner, so move towards current point of interest
 
-                    mVelocity = mVelocity + mls * (dir * mAvoidStrength);
+                    Vector2 dir = Program.Instance.GetCurrentPointOfInterest() - mPosition;
+
+                    if (dir.Length() > InterestRadius)
+                    {
+                        dir.Normalize();
+
+                        mVelocity = mVelocity + mls * (dir * mChaseStrength);
+                    }
                 }
-            }
 
-            // move away from nearest enemy
-            Enemy enemy = GetNearestEnemy();
+                // move away from nearest predator
+                Player predator = GetNearestPredator();
 
-            if (enemy != this)
-            {               
-                Vector2 dir = mPosition - enemy.mPosition;
-                if (dir.Length() - Radius - enemy.Radius < InterestRadius)
+                if (predator != null)
                 {
-                    dir.Normalize();
+                    Vector2 dir = mPosition - predator.mPosition;
+                    if (dir.Length() - Radius - predator.Radius < InterestRadius)
+                    {
+                        dir.Normalize();
 
-                    mVelocity = mVelocity + mls * (dir * mAvoidStrength);
+                        mVelocity = mVelocity + mls * (dir * mAvoidPlayerStrength);
+                    }
                 }
-            }
 
-            // add drag
-            Vector2 drag = new Vector2(-mVelocity.X, -mVelocity.Y);
-            if (drag.Length() != 0)
+                // move away from nearest enemy
+                Enemy enemy = GetNearestEnemy();
+
+                if (enemy != this)
+                {
+                    Vector2 dir = mPosition - enemy.mPosition;
+                    if (dir.Length() - Radius - enemy.Radius < InterestRadius)
+                    {
+                        dir.Normalize();
+
+                        mVelocity = mVelocity + mls * (dir * mAvoidEnemyStrength);
+
+                        if (dir.Length() - Radius - enemy.Radius < Radius)
+                        {
+                            if (mOwner != null && enemy.mOwner != null && mOwner != enemy.mOwner)
+                            {
+                                // destroy both
+                                Program.Instance.DestroyEnemy(this);
+                                Program.Instance.DestroyEnemy(enemy);
+                            }
+                            else if (mOwner != null && enemy.mOwner == null)
+                            {
+                                // convert enemy
+                                enemy.SetOwned(mOwner);
+                            }
+                            else if (mOwner == null && enemy.mOwner != null)
+                            {
+                                // convert this
+                                SetOwned(enemy.mOwner);
+                            }
+                        }
+                    }
+                }
+
+                // add drag
+                Vector2 drag = new Vector2(-mVelocity.X, -mVelocity.Y);
+                if (drag.Length() != 0)
+                {
+                    drag.Normalize();
+                    mVelocity = mVelocity + mls * (drag * (mVelocity.Length() * 2));
+                }
+
+                if (mVelocity.Length() > mMaxSpeed)
+                {
+                    mVelocity.Normalize();
+                    mVelocity = mVelocity * mMaxSpeed;
+                }
+
+                // set position
+                mPositionX = mPosition.X + mls * mVelocity.X;
+                mPositionY = mPosition.Y + mls * mVelocity.Y;
+            }
+            else if (mState == eEnemyState.FIRE)
             {
-                drag.Normalize();
-                mVelocity = mVelocity + mls * (drag * (mVelocity.Length() * 2));
+                // set position
+                mPositionX = mPosition.X + mls * mVelocity.X;
+                mPositionY = mPosition.Y + mls * mVelocity.Y;
             }
 
-            if (mVelocity.Length() > mMaxSpeed)
-            {
-                mVelocity.Normalize();
-                mVelocity = mVelocity * mMaxSpeed;
-            }
-
-            // set position
-            mPositionX = mPosition.X + mls * mVelocity.X;
-            mPositionY = mPosition.Y + mls * mVelocity.Y;
-
-            
             base.Update(gameTime);
         }
 
@@ -312,21 +342,24 @@ namespace Love_and_Hate
 
             foreach (Player player in Program.Instance.GamePlayers)
             {
-                if (player.PixelWidth > PixelWidth)
+                if (player == mOwner || mOwner == null)
                 {
-                    if (closestDistance == 0)
+                    if (player.PixelWidth > PixelWidth)
                     {
-                        closest = player;
-                        Vector2 distance = player.mPosition - mPosition;
-                        closestDistance = distance.Length();
-                    }
-                    else
-                    {
-                        Vector2 distance = player.mPosition - mPosition;
-                        if (distance.Length() < closestDistance)
+                        if (closestDistance == 0)
                         {
                             closest = player;
+                            Vector2 distance = player.mPosition - mPosition;
                             closestDistance = distance.Length();
+                        }
+                        else
+                        {
+                            Vector2 distance = player.mPosition - mPosition;
+                            if (distance.Length() < closestDistance)
+                            {
+                                closest = player;
+                                closestDistance = distance.Length();
+                            }
                         }
                     }
                 }
@@ -382,6 +415,14 @@ namespace Love_and_Hate
             mOwnedTime = mTimer;
             owner.mOwnedCount++;
             mOwnedDuration = (owner.mOwnedCount * 1000) + 5000;
+        }
+
+        public void Fire(Vector2 direction)
+        {
+            mFireDir = direction;
+            mVelocity = (mFireDir * mFireStrength);
+
+            mState = eEnemyState.FIRE;
         }
     }
 }
