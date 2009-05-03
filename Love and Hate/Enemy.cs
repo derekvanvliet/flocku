@@ -27,6 +27,8 @@ namespace Love_and_Hate
         public float mOwnedTime;
         public float mOwnedDuration;
         public Vector2 mFireDir;
+        public Player mPrevOwner;
+        public float mFireTime;
 
         public enum eEnemyState
         {
@@ -67,7 +69,7 @@ namespace Love_and_Hate
             // init scale
             Random random = new Random((int)DateTime.Now.Ticks);
 
-            mScale.X = 1.0f;
+            mScale.X = 1.5f;
             mScale.Y = mScale.X;
 
             //this.mBounds =
@@ -325,6 +327,16 @@ namespace Love_and_Hate
                     Program.Instance.DestroyEnemy(this);
                 }
 
+                if (mPrevOwner != null)
+                {
+                    if (mTimer - mFireTime > 100)
+                    {
+                        mState = eEnemyState.FLOCK;
+                        mPrevOwner.OwnEnemy(this);
+                        mPrevOwner = null;
+                    }
+                }
+
             }
 
             base.Update(gameTime);
@@ -477,6 +489,7 @@ namespace Love_and_Hate
             mFireDir = direction;
             mFireDir.Normalize();
             mVelocity = mFireDir * 500;
+            mFireTime = mTimer;
 
             mState = eEnemyState.FIRE;
         }

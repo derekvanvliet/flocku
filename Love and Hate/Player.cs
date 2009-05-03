@@ -21,6 +21,10 @@ namespace Love_and_Hate
         public int mHealth = Config.Instance.GetAsInt("PlayerHealth");
         public Vector2 mPOI;
         public Vector2 mPOIOffset = new Vector2(0, 35);
+        public bool mPowerupBurst = false;
+        public PowerupBurstIcon mPowerupBurstIcon;
+        public PHead mPHead;
+        public List<Heart> mHearts = new List<Heart>();
 
         public enum ePlayerState
         {
@@ -183,6 +187,8 @@ namespace Love_and_Hate
                         this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle_up", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_down", iPlayerFrameRate);
+
+                        mPHead = new P1Head(Program.Instance, Program.Instance.Content);
                         break;
                     }
                 case PlayerIndex.Two:
@@ -191,6 +197,8 @@ namespace Love_and_Hate
                         this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\idle_down", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_down", iPlayerFrameRate);
+
+                        mPHead = new P2Head(Program.Instance, Program.Instance.Content);
                         break;
                     }
                 case PlayerIndex.Three:
@@ -199,6 +207,8 @@ namespace Love_and_Hate
                         this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\idle_down", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_down", iPlayerFrameRate);
+
+                        mPHead = new P3Head(Program.Instance, Program.Instance.Content);
                         break;
                     }
                 case PlayerIndex.Four:
@@ -207,6 +217,8 @@ namespace Love_and_Hate
                         this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\idle_down", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_down", iPlayerFrameRate);
+
+                        mPHead = new P4Head(Program.Instance, Program.Instance.Content);
                         break;
                     }
             }
@@ -376,6 +388,26 @@ namespace Love_and_Hate
 
             AnimatedSpriteManager.Instance.Draw(gameTime);
 
+            if (mPowerupBurst)
+            {
+                if (mPowerupBurstIcon == null)
+                {
+                    mPowerupBurstIcon = new PowerupBurstIcon(Program.Instance, Program.Instance.Content);
+                }
+
+                mPowerupBurstIcon.mPosition = mPosition + new Vector2(0,-64);
+                mPowerupBurstIcon.DrawSprite(gameTime);
+            }
+            else
+            {
+                if (mPowerupBurstIcon != null)
+                {
+                    mPowerupBurstIcon.Destroy();
+                }
+            }
+
+            mPHead.DrawSprite(gameTime);
+
             base.DrawSprite(gameTime);           
         }
 
@@ -459,6 +491,16 @@ namespace Love_and_Hate
             //        }
             //    }
             //}
+
+            //check for collisions with powerups
+            foreach (Powerup pow in Program.Instance.mPowerups)
+            {
+                if (CheckForCollision(pow))
+                {
+                    pow.EngagePowerup(this);
+                    Program.Instance.DestroyPowerup(pow);
+                }
+            }
 
             // Check for collisions with other players
             foreach (Player p in Program.Instance.GamePlayers)
@@ -750,18 +792,23 @@ namespace Love_and_Hate
             }
 
 
-            if (IsButtonPressed(GamePad.GetState(m_id).Buttons.A))
+            if (mPowerupBurst)
             {
-                Random random = new Random((int)DateTime.Now.Ticks);
-                while (mEnemiesOwned.Count > 0)
+                if (IsButtonPressed(GamePad.GetState(m_id).Buttons.A))
                 {
+                    Random random = new Random((int)DateTime.Now.Ticks);
+                    while (mEnemiesOwned.Count > 0)
+                    {
 
-                    firedir.X = random.Next(0, 100) - 50;
-                    firedir.Y = random.Next(0, 100) - 50;
-                    
-                    mEnemiesOwned[0].mPosition = mPosition;
-                    mEnemiesOwned[0].Fire(firedir);
-                    UnOwnEnemy(mEnemiesOwned[0]);
+                        firedir.X = random.Next(0, 100) - 50;
+                        firedir.Y = random.Next(0, 100) - 50;
+
+                        mEnemiesOwned[0].mPrevOwner = this;
+                        mEnemiesOwned[0].mPosition = mPosition;
+                        mEnemiesOwned[0].Fire(firedir);
+                        UnOwnEnemy(mEnemiesOwned[0]);
+                        mPowerupBurst = false;
+                    }
                 }
             }
 
