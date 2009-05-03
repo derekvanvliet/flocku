@@ -17,7 +17,7 @@ namespace Love_and_Hate
 
         protected override void SetAssetName()
         {
-            mAssetName = "powerup_burst_icon";
+            mAssetName = "powerup_burst/pickup_green_0000";
         }
     }
 }

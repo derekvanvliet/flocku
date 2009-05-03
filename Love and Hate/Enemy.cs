@@ -113,11 +113,11 @@ namespace Love_and_Hate
             }
             int iPlayerFrameRate = Config.Instance.GetAsInt("PlayerFrameRate");
 
-            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4", iPlayerFrameRate);
+            mAnimPlayer0 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\purple_gubah", iPlayerFrameRate);
             mAnimPlayer1 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player01\\flock\\run_down", iPlayerFrameRate);
-            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player01\\flock\\run_down", iPlayerFrameRate);
-            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player01\\flock\\run_down", iPlayerFrameRate);
-            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\enemy\\player4", iPlayerFrameRate);
+            mAnimPlayer2 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player02\\flock\\run_down", iPlayerFrameRate);
+            mAnimPlayer3 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player03\\flock\\run_down", iPlayerFrameRate);
+            mAnimPlayer4 = new AnimatedSprite(Game, new Vector2(), 0, mScale.X, 0, "\\player04\\flock\\run_down", iPlayerFrameRate);
         }
 
         public override void DrawSprite(GameTime gameTime)
@@ -194,7 +194,6 @@ namespace Love_and_Hate
 
             if (mState == eEnemyState.FLOCK)
             {
-
                 this.mAnimPlayer0.Update(gameTime);
                 this.mAnimPlayer1.Update(gameTime);
                 this.mAnimPlayer2.Update(gameTime);

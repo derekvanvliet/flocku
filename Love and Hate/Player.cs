@@ -162,6 +162,8 @@ namespace Love_and_Hate
         
         AnimatedSprite m_runUpAnim;
         AnimatedSprite m_runDownAnim;
+
+        AnimatedSprite m_deathAnim;
         
         static AnimatedSprite m_mergeMonsterAnim;
 
@@ -185,9 +187,11 @@ namespace Love_and_Hate
                 case PlayerIndex.One:
                     {
                         this.m_idleFrontUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle_up", iPlayerFrameRate);
-                        this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle_up", iPlayerFrameRate);
+                        this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\idle_down", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_down", iPlayerFrameRate);
+						this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\death", iPlayerFrameRate);
+                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P1Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)
@@ -195,7 +199,7 @@ namespace Love_and_Hate
                             Heart heart = new Heart(Program.Instance, Program.Instance.Content);
                             mHearts.Add(heart);
 
-                            heart.mPositionX = mPHead.mPositionX + (mPHead.PixelWidth) + (i * heart.PixelWidth);
+                            heart.mPositionX = mPHead.mPositionX + (mPHead.PixelWidth * 0.75f) + (i * heart.PixelWidth);
                             heart.mPositionY = heart.PixelHeight / 2;
                         }
                         break;
@@ -206,6 +210,8 @@ namespace Love_and_Hate
                         this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\idle_down", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_down", iPlayerFrameRate);
+						this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\death", iPlayerFrameRate);
+                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P2Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)
@@ -213,7 +219,7 @@ namespace Love_and_Hate
                             Heart heart = new Heart(Program.Instance, Program.Instance.Content);
                             mHearts.Add(heart);
 
-                            heart.mPositionX = mPHead.mPositionX - (mPHead.PixelWidth) - (i * heart.PixelWidth);
+                            heart.mPositionX = mPHead.mPositionX - (mPHead.PixelWidth * 0.75f) - (i * heart.PixelWidth);
                             heart.mPositionY = heart.PixelHeight / 2;
                         }
                         break;
@@ -224,6 +230,8 @@ namespace Love_and_Hate
                         this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\idle_down", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_down", iPlayerFrameRate);
+						this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\death", iPlayerFrameRate);
+                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P3Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)
@@ -231,7 +239,7 @@ namespace Love_and_Hate
                             Heart heart = new Heart(Program.Instance, Program.Instance.Content);
                             mHearts.Add(heart);
 
-                            heart.mPositionX = mPHead.mPositionX + (mPHead.PixelWidth) + (i * heart.PixelWidth);
+                            heart.mPositionX = mPHead.mPositionX + (mPHead.PixelWidth * 0.75f) + (i * heart.PixelWidth);
                             heart.mPositionY = Config.Instance.GetAsInt("ScreenHeight") - heart.PixelHeight / 2;
                         }
                         break;
@@ -242,6 +250,8 @@ namespace Love_and_Hate
                         this.m_idleFrontDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\idle_down", iPlayerFrameRate);
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_down", iPlayerFrameRate);
+                        this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\death", iPlayerFrameRate);
+                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P4Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)
@@ -249,7 +259,7 @@ namespace Love_and_Hate
                             Heart heart = new Heart(Program.Instance, Program.Instance.Content);
                             mHearts.Add(heart);
 
-                            heart.mPositionX = mPHead.mPositionX - (mPHead.PixelWidth) - (i * heart.PixelWidth);
+                            heart.mPositionX = mPHead.mPositionX - (mPHead.PixelWidth * 0.75f) - (i * heart.PixelWidth);
                             heart.mPositionY = Config.Instance.GetAsInt("ScreenHeight") - heart.PixelHeight / 2;
                         }
                         break;
@@ -303,7 +313,12 @@ namespace Love_and_Hate
         public override void DrawSprite(GameTime gameTime)
         {
             if (mHealth <= 0)
+            {
+                if (m_deathAnim != null)
+                    this.m_deathAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+
                 return;
+            }
 
             if (IsMerged && !Player.IsThisPlayerCaptain(this) )
                 return;
@@ -313,11 +328,11 @@ namespace Love_and_Hate
                 case ePlayerState.IDLE:
                     if (lastMovedX > 0 && lastMovedY > 0)
                     {
-                        this.m_idleFrontUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
-                    }
-                    else if (lastMovedX < 0 && lastMovedY >= 0)
-                    {
                         this.m_idleFrontUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.FlipHorizontally);
+                    }
+                    else if (lastMovedX < 0 && lastMovedY > 0)
+                    {
+                        this.m_idleFrontUpAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
                     }
                     else if (lastMovedX > 0 && lastMovedY < 0)
                     {
@@ -429,7 +444,7 @@ namespace Love_and_Hate
                     mPowerupBurstIcon = new PowerupBurstIcon(Program.Instance, Program.Instance.Content);
                 }
 
-                mPowerupBurstIcon.mPosition = mPosition + new Vector2(0,-64);
+                mPowerupBurstIcon.mPosition = mPosition + new Vector2(0,-48);
                 mPowerupBurstIcon.DrawSprite(gameTime);
             }
             else
@@ -467,7 +482,11 @@ namespace Love_and_Hate
             mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             if (mHealth <= 0)
+            {
+                m_deathAnim.Update(gameTime);
+
                 return;
+            }
 
         	if (!bInitialized)
             {
@@ -646,7 +665,24 @@ namespace Love_and_Hate
                     {
                         if (e.PixelWidth < this.PixelWidth)
                         {
-                            AudioManager.Instance.PlaySound("MonsterDie");
+                            switch (this.id)
+                            {
+                                case PlayerIndex.One:
+                                    AudioManager.Instance.PlaySound("Player1Assimilation");
+                                    break;
+
+                                case PlayerIndex.Two:
+                                    AudioManager.Instance.PlaySound("Player2Assimilation");
+                                    break;
+
+                                case PlayerIndex.Three:
+                                    AudioManager.Instance.PlaySound("Player3Assimilation");
+                                    break;
+
+                                case PlayerIndex.Four:
+                                    AudioManager.Instance.PlaySound("Player4Assimilation");
+                                    break;
+                            }
 
                             /*
                             AnimatedSpriteEx killAnim = new AnimatedSpriteEx(this.Game);
@@ -829,6 +865,25 @@ namespace Love_and_Hate
                         mEnemiesOwned[0].mPosition = mPosition;
                         mEnemiesOwned[0].Fire(firedir);
                         UnOwnEnemy(mEnemiesOwned[0]);
+
+                        switch (this.id)
+                        {
+                            case PlayerIndex.One:
+                                AudioManager.Instance.PlaySound("Player1Shoot");
+                                break;
+
+                            case PlayerIndex.Two:
+                                AudioManager.Instance.PlaySound("Player2Shoot");
+                                break;
+
+                            case PlayerIndex.Three:
+                                AudioManager.Instance.PlaySound("Player3Shoot");
+                                break;
+
+                            case PlayerIndex.Four:
+                                AudioManager.Instance.PlaySound("Player4Shoot");
+                                break;
+                        }
                     }
                 }
             }
@@ -1042,6 +1097,28 @@ namespace Love_and_Hate
                         mOwnedCount--;
                         UnOwnEnemy(e);
                         e.mOwner = null;
+                if (mEnemiesOwned.Count == 0)
+                {                 
+                    switch (this.id)
+                    {
+                        case PlayerIndex.One:
+                            AudioManager.Instance.PlaySound("Player1Death");
+                            break;
+
+                        case PlayerIndex.Two:
+                            AudioManager.Instance.PlaySound("Player2Death");
+                            break;
+
+                        case PlayerIndex.Three:
+                            AudioManager.Instance.PlaySound("Player3Death");
+                            break;
+
+                        case PlayerIndex.Four:
+                            AudioManager.Instance.PlaySound("Player4Death");
+                            break;
+                    }
+
+                }
                     }
 
                     Program.Instance.mAlivePlayerCount--;
