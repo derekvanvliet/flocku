@@ -9,9 +9,12 @@ namespace Love_and_Hate
 {
     public class PowerupHealth : Powerup
     {
+        AnimatedSprite mAnim;
+
         public PowerupHealth(Game game, ContentManager theContentManager)
             : base(game, theContentManager)
         {
+            mAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\powerup_health", Config.Instance.GetAsInt("PlayerFrameRate"));
 
         }
 
@@ -30,5 +33,18 @@ namespace Love_and_Hate
                 p.mHealth = Config.Instance.GetAsInt("PlayerHealth");
             }
         }
+
+        public override void Update(GameTime gameTime)
+        {
+            mAnim.Update(gameTime);
+
+            base.Update(gameTime);
+        }
+
+        public override void DrawSprite(GameTime gameTime)
+        {
+            mAnim.Draw(gameTime, this.mPosition - Vector2.One * Radius, SpriteEffects.None);
+        }
+
     }
 }
