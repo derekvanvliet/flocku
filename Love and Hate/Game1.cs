@@ -265,6 +265,7 @@ namespace Love_and_Hate
 
         protected void UpdateTimeText()
         {
+            /*
             int newTime = (mTimeLimit - (int)mTimer) / 1000;
             if (mCurTime != newTime)
             {
@@ -272,15 +273,16 @@ namespace Love_and_Hate
 
                 mTime.Print(640, 0, String.Format("{0}", newTime));
             }
+             */
         }
 
         protected void GameUpdate(GameTime gameTime)
         {
             mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (mTimer < mTimeLimit)
+            if (1 == 1)
             {
-                UpdateTimeText();
+                //UpdateTimeText();
 
                 if (mEnemies.Count < mMaxEnemies)
                 {
@@ -572,6 +574,10 @@ namespace Love_and_Hate
 
         public void DestroyEnemy(Enemy e)
         {
+            if (e.mOwner != null)
+            {
+                e.mOwner.UnOwnEnemy(e);
+            }
             e.Destroy();
             mDestroyEnemies.Add(e);
         }
