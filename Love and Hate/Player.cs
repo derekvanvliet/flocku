@@ -25,6 +25,7 @@ namespace Love_and_Hate
         public PowerupBurstIcon mPowerupBurstIcon;
         public PHead mPHead;
         public List<Heart> mHearts = new List<Heart>();
+        public int mHeartCount = 4;
 
         public enum ePlayerState
         {
@@ -189,6 +190,14 @@ namespace Love_and_Hate
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_down", iPlayerFrameRate);
 
                         mPHead = new P1Head(Program.Instance, Program.Instance.Content);
+                        for (int i = 0; i < mHeartCount; i++)
+                        {
+                            Heart heart = new Heart(Program.Instance, Program.Instance.Content);
+                            mHearts.Add(heart);
+
+                            heart.mPositionX = mPHead.mPositionX + (mPHead.PixelWidth) + (i * heart.PixelWidth);
+                            heart.mPositionY = heart.PixelHeight / 2;
+                        }
                         break;
                     }
                 case PlayerIndex.Two:
@@ -199,6 +208,14 @@ namespace Love_and_Hate
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_down", iPlayerFrameRate);
 
                         mPHead = new P2Head(Program.Instance, Program.Instance.Content);
+                        for (int i = 0; i < mHeartCount; i++)
+                        {
+                            Heart heart = new Heart(Program.Instance, Program.Instance.Content);
+                            mHearts.Add(heart);
+
+                            heart.mPositionX = mPHead.mPositionX - (mPHead.PixelWidth) - (i * heart.PixelWidth);
+                            heart.mPositionY = heart.PixelHeight / 2;
+                        }
                         break;
                     }
                 case PlayerIndex.Three:
@@ -209,6 +226,14 @@ namespace Love_and_Hate
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_down", iPlayerFrameRate);
 
                         mPHead = new P3Head(Program.Instance, Program.Instance.Content);
+                        for (int i = 0; i < mHeartCount; i++)
+                        {
+                            Heart heart = new Heart(Program.Instance, Program.Instance.Content);
+                            mHearts.Add(heart);
+
+                            heart.mPositionX = mPHead.mPositionX + (mPHead.PixelWidth) + (i * heart.PixelWidth);
+                            heart.mPositionY = Config.Instance.GetAsInt("ScreenHeight") - heart.PixelHeight / 2;
+                        }
                         break;
                     }
                 case PlayerIndex.Four:
@@ -219,9 +244,18 @@ namespace Love_and_Hate
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_down", iPlayerFrameRate);
 
                         mPHead = new P4Head(Program.Instance, Program.Instance.Content);
+                        for (int i = 0; i < mHeartCount; i++)
+                        {
+                            Heart heart = new Heart(Program.Instance, Program.Instance.Content);
+                            mHearts.Add(heart);
+
+                            heart.mPositionX = mPHead.mPositionX - (mPHead.PixelWidth) - (i * heart.PixelWidth);
+                            heart.mPositionY = Config.Instance.GetAsInt("ScreenHeight") - heart.PixelHeight / 2;
+                        }
                         break;
                     }
             }
+
 
             if (Player.m_mergeMonsterAnim == null)
                 Player.m_mergeMonsterAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\mergemonster", iPlayerFrameRate);                
@@ -407,6 +441,14 @@ namespace Love_and_Hate
             }
 
             mPHead.DrawSprite(gameTime);
+
+            for (int i = 0; i < mHeartCount; i++)
+            {
+                if (mHealth > i * (Config.Instance.GetAsInt("PlayerHealth") / mHeartCount))
+                {
+                    mHearts[i].DrawSprite(gameTime);
+                }
+            }
 
             base.DrawSprite(gameTime);           
         }
