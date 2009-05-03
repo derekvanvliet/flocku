@@ -457,6 +457,12 @@ namespace Love_and_Hate
                 {
                     p.mPowerupBurstIcon.Destroy();
                 }
+
+                p.mPHead.Destroy();
+                foreach (Heart h in p.mHearts)
+                {
+                    h.Destroy();
+                }
                 p.Destroy();
             }
 
@@ -634,14 +640,14 @@ namespace Love_and_Hate
             {
                 PowerupBurst pow = new PowerupBurst(this, this.Content);
                 pow.mPositionX = random.Next(0, Config.Instance.GetAsInt("ScreenWidth") - 64);
-                pow.mPositionY = random.Next(0, Config.Instance.GetAsInt("ScreenHeight") - 64);
+                pow.mPositionY = random.Next(128, Config.Instance.GetAsInt("ScreenHeight") - 128);
                 mPowerups.Add(pow);
             }
             else if (rnd == 1)
             {
                 PowerupHealth pow = new PowerupHealth(this, this.Content);
                 pow.mPositionX = random.Next(0, Config.Instance.GetAsInt("ScreenWidth") - 64);
-                pow.mPositionY = random.Next(0, Config.Instance.GetAsInt("ScreenHeight") - 64);
+                pow.mPositionY = random.Next(128, Config.Instance.GetAsInt("ScreenHeight") - 128);
                 mPowerups.Add(pow);
             }
 
