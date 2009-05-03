@@ -618,20 +618,21 @@ namespace Love_and_Hate
             }
             else
             {
+                mLastShot = 0;
                 mFiring = false;
             }
 
             if (mFiring)
             {
-                if (mTimer - mLastShot > 100)
+                if (mTimer - mLastShot > 200)
                 {
                     mLastShot = mTimer;
                     if (mEnemiesOwned.Count > 0)
                     {
-                        /*
+                        firedir.Y = -firedir.Y;
+                        mEnemiesOwned[0].mPosition = mPosition;
                         mEnemiesOwned[0].Fire(firedir);
                         UnOwnEnemy(mEnemiesOwned[0]);
-                        */
                     }
                 }
             }

@@ -14,7 +14,6 @@ namespace Love_and_Hate
         public float mChaseStrength = 500;
         public float mAvoidPlayerStrength = 1000;
         public float mAvoidEnemyStrength = 1000;
-        public float mFireStrength = 5000;
         public float mMinHelpless = 0.5f;
         public Vector2 mVelocity = new Vector2();
         public int mLevel = 0;
@@ -263,14 +262,16 @@ namespace Love_and_Hate
                                 Program.Instance.DestroyEnemy(this);
                                 Program.Instance.DestroyEnemy(enemy);
                             }
-                            else if (mOwner != null && enemy.mOwner == null)
+                            else if (mOwner != null && enemy.mOwner == null && mState != eEnemyState.FIRE && enemy.mState != eEnemyState.FIRE)
                             {
                                 // convert enemy
+                                mOwner.OwnEnemy(enemy);
                                 enemy.SetOwned(mOwner);
                             }
-                            else if (mOwner == null && enemy.mOwner != null)
+                            else if (mOwner == null && enemy.mOwner != null && mState != eEnemyState.FIRE && enemy.mState != eEnemyState.FIRE)
                             {
                                 // convert this
+                                enemy.mOwner.OwnEnemy(this);
                                 SetOwned(enemy.mOwner);
                             }
                         }
@@ -297,9 +298,24 @@ namespace Love_and_Hate
             }
             else if (mState == eEnemyState.FIRE)
             {
+                if (mVelocity.Length() > mMaxSpeed)
+                {
+                    mVelocity.Normalize();
+                    mVelocity = mVelocity * mMaxSpeed;
+                }
+
                 // set position
                 mPositionX = mPosition.X + mls * mVelocity.X;
                 mPositionY = mPosition.Y + mls * mVelocity.Y;
+
+                if (mPosition.X > Config.Instance.GetAsInt("ScreenWidth") ||
+                    mPosition.Y > Config.Instance.GetAsInt("ScreenHeight") ||
+                    mPosition.X < 0 ||
+                    mPosition.Y < 0)
+                {
+                    Program.Instance.DestroyEnemy(this);
+                }
+
             }
 
             base.Update(gameTime);
@@ -420,7 +436,8 @@ namespace Love_and_Hate
         public void Fire(Vector2 direction)
         {
             mFireDir = direction;
-            mVelocity = (mFireDir * mFireStrength);
+            mFireDir.Normalize();
+            mVelocity = mFireDir * 500;
 
             mState = eEnemyState.FIRE;
         }
