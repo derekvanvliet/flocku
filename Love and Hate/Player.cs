@@ -22,7 +22,9 @@ namespace Love_and_Hate
         public Vector2 mPOI;
         public Vector2 mPOIOffset = new Vector2(0, 35);
         public bool mPowerupBurst = false;
+        public bool mPowerupHoming = false;
         public PowerupBurstIcon mPowerupBurstIcon;
+        public PowerupHomingIcon mPowerupHomingIcon;
         public PHead mPHead;
         public List<Heart> mHearts = new List<Heart>();
         public int mHeartCount = 4;
@@ -444,7 +446,7 @@ namespace Love_and_Hate
                     mPowerupBurstIcon = new PowerupBurstIcon(Program.Instance, Program.Instance.Content);
                 }
 
-                mPowerupBurstIcon.mPosition = mPosition + new Vector2(0,-48);
+                mPowerupBurstIcon.mPosition = mPosition + new Vector2(0, -48);
                 mPowerupBurstIcon.DrawSprite(gameTime);
             }
             else
@@ -452,6 +454,24 @@ namespace Love_and_Hate
                 if (mPowerupBurstIcon != null)
                 {
                     mPowerupBurstIcon.Destroy();
+                }
+            }
+
+            if (mPowerupHoming)
+            {
+                if (mPowerupHomingIcon == null)
+                {
+                    mPowerupHomingIcon = new PowerupHomingIcon(Program.Instance, Program.Instance.Content);
+                }
+
+                mPowerupHomingIcon.mPosition = mPosition + new Vector2(0, -48);
+                mPowerupHomingIcon.DrawSprite(gameTime);
+            }
+            else
+            {
+                if (mPowerupHomingIcon != null)
+                {
+                    mPowerupHomingIcon.Destroy();
                 }
             }
 
@@ -896,7 +916,6 @@ namespace Love_and_Hate
                     Random random = new Random((int)DateTime.Now.Ticks);
                     while (mEnemiesOwned.Count > 0)
                     {
-
                         firedir.X = random.Next(0, 100) - 50;
                         firedir.Y = random.Next(0, 100) - 50;
 
@@ -904,9 +923,26 @@ namespace Love_and_Hate
                         mEnemiesOwned[0].mPosition = mPosition;
                         mEnemiesOwned[0].Fire(firedir);
                         UnOwnEnemy(mEnemiesOwned[0]);
-                        mPowerupBurst = false;
                     }
+                    mPowerupBurst = false;
                 }
+            }
+
+            if (mPowerupHoming)
+            {
+                if (IsButtonPressed(GamePad.GetState(m_id).Buttons.Y))
+                {
+                    Player nearest = GetNearestPlayer();
+
+                    while (mEnemiesOwned.Count > 0)
+                    {
+                        Enemy e = mEnemiesOwned[0];
+                        e.Homing(nearest);
+                        UnOwnEnemy(e);
+                    }
+                    mPowerupHoming = false;
+                }
+
             }
 
             Vector2 drag2 = new Vector2(-mVelocity.X, -mVelocity.Y);
@@ -1124,6 +1160,36 @@ namespace Love_and_Hate
                     Program.Instance.mAlivePlayerCount--;
                 }
             }
+        }
+
+        public Player GetNearestPlayer()
+        {
+            Player closest = null;
+            float closestDistance = 0f;
+
+            foreach (Player player in Program.Instance.GamePlayers)
+            {
+                if (player != this && player.mHealth > 0)
+                {
+                    if (closestDistance == 0)
+                    {
+                        closest = player;
+                        Vector2 distance = player.mPosition - mPosition;
+                        closestDistance = distance.Length();
+                    }
+                    else
+                    {
+                        Vector2 distance = player.mPosition - mPosition;
+                        if (distance.Length() < closestDistance)
+                        {
+                            closest = player;
+                            closestDistance = distance.Length();
+                        }
+                    }
+                }
+            }
+
+            return closest;
         }
 
         public void ResetPosition()

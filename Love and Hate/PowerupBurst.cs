@@ -27,6 +27,7 @@ namespace Love_and_Hate
         public override void EngagePowerup(Player p)
         {
             p.mPowerupBurst = true;
+            p.mPowerupHoming = false;
             base.EngagePowerup(p);
         }
 

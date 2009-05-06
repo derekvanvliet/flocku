@@ -60,7 +60,7 @@ namespace Love_and_Hate
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = Config.Instance.GetAsInt("ScreenWidth");
             graphics.PreferredBackBufferHeight = Config.Instance.GetAsInt("ScreenHeight");
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
 
             mEnemies = new List<Enemy>();
             mPowerups = new List<Powerup>();
@@ -234,7 +234,7 @@ namespace Love_and_Hate
             {
                 mLoadingScreen.Destroy();
                 
-                AudioManager.Instance.PlaySound("BackgroundMusic");
+                //AudioManager.Instance.PlaySound("BackgroundMusic");
 
                 mBackground = new Background(this, this.Content);
 
@@ -339,8 +339,6 @@ namespace Love_and_Hate
                 List<Sprite> positions = new List<Sprite>();
 
                 positions.Add(rnum1);
-                positions.Add(rnum2);
-                positions.Add(rnum3);
 
                 foreach (Player p in GamePlayers)
                 {
@@ -504,6 +502,15 @@ namespace Love_and_Hate
             if(rp4 != null)
                 rp4.Destroy();
 
+            rnum1 = null;
+            rnum2 = null;
+            rnum3 = null;
+
+            rp1 = null;
+            rp2 = null;
+            rp3 = null;
+            rp4 = null;
+
             mTime.Dispose();
 
             mGameState = GameState.Init;
@@ -635,7 +642,7 @@ namespace Love_and_Hate
         public void NewPowerup()
         {
             Random random = new Random((int)DateTime.Now.Ticks);
-            int rnd = random.Next(0,2);
+            int rnd = random.Next(0,3);
 
             if (rnd == 0) 
             {
@@ -647,6 +654,13 @@ namespace Love_and_Hate
             else if (rnd == 1)
             {
                 PowerupHealth pow = new PowerupHealth(this, this.Content);
+                pow.mPositionX = random.Next(0, Config.Instance.GetAsInt("ScreenWidth") - 64);
+                pow.mPositionY = random.Next(128, Config.Instance.GetAsInt("ScreenHeight") - 128);
+                mPowerups.Add(pow);
+            }
+            else if (rnd == 2)
+            {
+                PowerupHoming pow = new PowerupHoming(this, this.Content);
                 pow.mPositionX = random.Next(0, Config.Instance.GetAsInt("ScreenWidth") - 64);
                 pow.mPositionY = random.Next(128, Config.Instance.GetAsInt("ScreenHeight") - 128);
                 mPowerups.Add(pow);
