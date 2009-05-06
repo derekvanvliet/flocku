@@ -19,5 +19,13 @@ namespace Love_and_Hate
         {
             mAssetName = "powerup_burst/pickup_green_0000";
         }
+
+        protected override void LoadContent()
+        {
+            base.LoadContent();
+
+            mScale.X = 0.5f;
+            mScale.Y = mScale.X;
+        }
     }
 }

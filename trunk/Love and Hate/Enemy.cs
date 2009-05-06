@@ -29,11 +29,13 @@ namespace Love_and_Hate
         public Vector2 mFireDir;
         public Player mPrevOwner;
         public float mFireTime;
+        public Player mHomingPlayer;
 
         public enum eEnemyState
         {
             FLOCK = 0,
-            FIRE
+            FIRE,
+            HOMING
         }
 
         public eEnemyState mState = eEnemyState.FLOCK;
@@ -337,6 +339,42 @@ namespace Love_and_Hate
                 }
 
             }
+            else if (mState == eEnemyState.HOMING)
+            {
+                if (mHomingPlayer.mHealth > 0)
+                {
+                    Vector2 dir = mHomingPlayer.mPosition - mPosition;
+                    dir.Normalize();
+
+                    mVelocity = mVelocity + mls * (dir * mChaseStrength);
+                }
+                else
+                {
+                    /*
+                    mOwner.mOwnedCount--;
+                    mOwner.UnOwnEnemy(this);
+                    mOwner = null;
+                     * */
+                }
+
+                // add drag
+                Vector2 drag = new Vector2(-mVelocity.X, -mVelocity.Y);
+                if (drag.Length() != 0)
+                {
+                    drag.Normalize();
+                    mVelocity = mVelocity + mls * (drag * (mVelocity.Length() * 2));
+                }
+
+                if (mVelocity.Length() > mMaxSpeed)
+                {
+                    mVelocity.Normalize();
+                    mVelocity = mVelocity * mMaxSpeed;
+                }
+
+                // set position
+                mPositionX = mPosition.X + mls * mVelocity.X;
+                mPositionY = mPosition.Y + mls * mVelocity.Y;
+            }
 
             base.Update(gameTime);
         }
@@ -491,6 +529,12 @@ namespace Love_and_Hate
             mFireTime = mTimer;
 
             mState = eEnemyState.FIRE;
+        }
+
+        public void Homing(Player player)
+        {
+            mHomingPlayer = player;
+            mState = eEnemyState.HOMING;
         }
     }
 }

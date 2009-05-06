@@ -1832,6 +1832,43 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="powerup_homing\pickup_yellow_0000.png">
+      <Name>pickup_yellow_0000</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_homing\pickup_yellow_0001.png">
+      <Name>pickup_yellow_0001</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_homing\pickup_yellow_0002.png">
+      <Name>pickup_yellow_0002</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_homing\pickup_yellow_0003.png">
+      <Name>pickup_yellow_0003</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_homing\pickup_yellow_0004.png">
+      <Name>pickup_yellow_0004</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_homing\pickup_yellow_0005.png">
+      <Name>pickup_yellow_0005</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="powerup_homing\pickup_yellow_0006.png">
+      <Name>pickup_yellow_0006</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="player04\flock\idle_down\" />
     <Folder Include="player04\flock\idle_up\" />
   </ItemGroup>
