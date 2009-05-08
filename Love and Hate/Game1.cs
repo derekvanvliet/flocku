@@ -130,8 +130,11 @@ namespace Love_and_Hate
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
+                  Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 this.Exit();
+            }
 
      		// TODO: Add your update logic here
             switch(mGameState)
