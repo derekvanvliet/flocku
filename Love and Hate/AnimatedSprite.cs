@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
+using System.Threading;
 
 // Take from http://msdn.microsoft.com/en-us/library/bb203866.aspx
 //
@@ -34,6 +35,14 @@ namespace Love_and_Hate
             KILL,
             INFINITE
         }
+
+        public enum eAnimationEffect
+        {
+            NONE,
+            FLASH
+        }
+
+        eAnimationEffect mAnimEffect = eAnimationEffect.NONE;
 
         public eAnimationType AnimationType { get; set; }
 
@@ -141,6 +150,47 @@ namespace Love_and_Hate
             DrawFrame(batch, Frame, screenPos, effects);
         }
 
+
+        public void PulsateTimeout()
+        {
+            // Remove flash effect
+        }
+
+        //public void PulsateEffect(object obj)
+        //{
+        //    Byte bObj = ((Byte)obj);
+
+        //    bObj--;
+
+        //    //Texture2D tex = (Texture2D)obj;
+
+        //    //Color[] texData = new Color[tex.Width * tex.Height];                                
+        //    //tex.GetData<Color>(texData);
+
+        //    //for (int i = 0; i < texData.Length; i++)
+        //    //{
+        //      //  if (texData[i].A != 0)
+        //        //    texData[i].A -= 30;
+        //    //}
+
+        //}
+
+        //public void StartPulsate()
+        //{
+
+            //.this.TimerCallback myTimerCallback = new TimerCallback(PulsateEffect);
+
+            //new Timer(myTimerCallback, alpha, 0, 16);
+
+            //new Timer(myTimerCallback, myTexData, 0, 16);
+        //}
+
+
+        Byte alpha          = 255;
+        long timeElapsed    = 0;
+        public int maxElapseLoops = 0;
+
+
         public void DrawFrame(SpriteBatch batch, int frame, Vector2 screenPos, SpriteEffects effects)
         {
             int FrameWidth = FrameTextures[frame].Width;// / framecount;
@@ -148,7 +198,42 @@ namespace Love_and_Hate
             //Rectangle sourcerect = new Rectangle(FrameWidth * frame, 0, FrameWidth, FrameTextures[frame].Height);
             Rectangle sourcerect = new Rectangle(FrameWidth, 0, FrameWidth, FrameTextures[frame].Height);
 
-            batch.Draw(FrameTextures[frame], screenPos, null, Color.White, 0, new Vector2(), this.Scale, effects, 0);//, Rotation, Origin, Scale, SpriteEffects.None, Depth);
+            // If state is flashing
+
+            if (maxElapseLoops > 0)
+            {
+                timeElapsed += this.GameObj.TargetElapsedTime.Milliseconds;
+
+                if (timeElapsed > 100)
+                {
+                    alpha--;
+
+                    if (alpha == 0)
+                        alpha = 255;
+
+                    Color[] texData = new Color[FrameTextures[frame].Width * FrameTextures[frame].Height];
+                    FrameTextures[frame].GetData<Color>(texData);
+
+                    for (int i = 0; i < texData.Length; i++)
+                    {
+                        if (texData[i].A != 0)
+                            texData[i].A -= 5;
+                    }
+
+                    Texture2D tex = new Texture2D(this.GameObj.GraphicsDevice, FrameTextures[frame].Width, FrameTextures[frame].Height);
+
+                    tex.SetData<Color>(texData);
+
+                    batch.Draw(tex, screenPos, null, Color.White, 0, new Vector2(), this.Scale, effects, 0);//, Rotation, Origin, Scale, SpriteEffects.None, Depth);
+
+                    timeElapsed = 0;
+                    maxElapseLoops--;
+                }
+            }
+            else
+                batch.Draw(FrameTextures[frame], screenPos, null, Color.White, 0, new Vector2(), this.Scale, effects, 0);//, Rotation, Origin, Scale, SpriteEffects.None, Depth);
+
+            //batch.Draw(FrameTextures[frame], screenPos, null, Color.White, 0, new Vector2(), this.Scale, effects, 0);//, Rotation, Origin, Scale, SpriteEffects.None, Depth);
             //batch.Draw(FrameTextures[frame], screenPos, sourcerect, Color.White, Rotation, Origin, Scale, SpriteEffects.None, Depth);
         }
 
