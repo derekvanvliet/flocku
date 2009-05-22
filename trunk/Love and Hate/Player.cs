@@ -29,6 +29,8 @@ namespace Love_and_Hate
         public List<Heart> mHearts = new List<Heart>();
         public int mHeartCount = 4;
 
+        public int mPulseTimeMS = 0;
+
         public enum ePlayerState
         {
             WALK = 0,
@@ -102,6 +104,9 @@ namespace Love_and_Hate
             get { return m_bIsMerged; }
             set { m_bIsMerged = value; }
         }
+
+
+
 
         // Index on the dictionary is the merge captain
         private static Dictionary<PlayerIndex, PlayerMergeList> m_PlayerMerges = 
@@ -269,8 +274,8 @@ namespace Love_and_Hate
             }
 
 
-            if (Player.m_mergeMonsterAnim == null)
-                Player.m_mergeMonsterAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\mergemonster", iPlayerFrameRate);                
+            //if (Player.m_mergeMonsterAnim == null)
+              //  Player.m_mergeMonsterAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\mergemonster", iPlayerFrameRate);                
         }
 
         protected override void LoadContent()
@@ -496,8 +501,20 @@ namespace Love_and_Hate
                 this.PlayerState = ePlayerState.RUN;
         }
 
-        public override void Update(GameTime gameTime)
+        void Pulsate(object state)
         {
+            Color[] tex = (Color[])state;
+
+            for (int i = 0; i < tex.Length; i++)
+            {
+                if (tex[i].A != 0)
+                    tex[i].A -= 20;
+            }
+        }
+
+
+        public override void Update(GameTime gameTime)
+        {           
             float mls = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f;
             mTimer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
@@ -1125,6 +1142,14 @@ namespace Love_and_Hate
             {
                 mHealth--;
 
+                this.m_idleFrontDownAnim.maxElapseLoops = 5;
+                this.m_idleFrontUpAnim.maxElapseLoops = 5;
+                this.m_runDownAnim.maxElapseLoops = 5;
+                this.m_runUpAnim.maxElapseLoops = 5;
+
+                // Start a timer, flash the sprite.
+                //this.
+
                 if (mHealth == 0)
                 {
                     while (mEnemiesOwned.Count > 0)
@@ -1133,28 +1158,29 @@ namespace Love_and_Hate
                         mOwnedCount--;
                         UnOwnEnemy(e);
                         e.mOwner = null;
-                if (mEnemiesOwned.Count == 0)
-                {                 
-                    switch (this.id)
-                    {
-                        case PlayerIndex.One:
-                            AudioManager.Instance.PlaySound("Player1Death");
-                            break;
 
-                        case PlayerIndex.Two:
-                            AudioManager.Instance.PlaySound("Player2Death");
-                            break;
+                        if (mEnemiesOwned.Count == 0)
+                        {                 
+                            switch (this.id)
+                            {
+                                case PlayerIndex.One:
+                                    AudioManager.Instance.PlaySound("Player1Death");
+                                    break;
 
-                        case PlayerIndex.Three:
-                            AudioManager.Instance.PlaySound("Player3Death");
-                            break;
+                                case PlayerIndex.Two:
+                                    AudioManager.Instance.PlaySound("Player2Death");
+                                    break;
 
-                        case PlayerIndex.Four:
-                            AudioManager.Instance.PlaySound("Player4Death");
-                            break;
-                    }
+                                case PlayerIndex.Three:
+                                    AudioManager.Instance.PlaySound("Player3Death");
+                                    break;
 
-                }
+                                case PlayerIndex.Four:
+                                    AudioManager.Instance.PlaySound("Player4Death");
+                                    break;
+                            }
+
+                        }
                     }
 
                     Program.Instance.mAlivePlayerCount--;
