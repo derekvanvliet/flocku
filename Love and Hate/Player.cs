@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Love_and_Hate
+namespace FlockU
 {
     public class Player : Sprite
     {
@@ -198,7 +198,7 @@ namespace Love_and_Hate
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\run_down", iPlayerFrameRate);
 						this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player01\\death", iPlayerFrameRate);
-                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
+                        this.m_deathAnim.AnimationType = FlockU.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P1Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)
@@ -218,7 +218,7 @@ namespace Love_and_Hate
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\run_down", iPlayerFrameRate);
 						this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player02\\death", iPlayerFrameRate);
-                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
+                        this.m_deathAnim.AnimationType = FlockU.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P2Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)
@@ -238,7 +238,7 @@ namespace Love_and_Hate
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\run_down", iPlayerFrameRate);
 						this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player03\\death", iPlayerFrameRate);
-                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
+                        this.m_deathAnim.AnimationType = FlockU.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P3Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)
@@ -258,7 +258,7 @@ namespace Love_and_Hate
                         this.m_runUpAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_up", iPlayerFrameRate);
                         this.m_runDownAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\run_down", iPlayerFrameRate);
                         this.m_deathAnim = new AnimatedSprite(Game, new Vector2(0, 0), 0, mScale.X, 0, "\\player04\\death", iPlayerFrameRate);
-                        this.m_deathAnim.AnimationType = Love_and_Hate.AnimatedSprite.eAnimationType.KILL;
+                        this.m_deathAnim.AnimationType = FlockU.AnimatedSprite.eAnimationType.KILL;
 
                         mPHead = new P4Head(Program.Instance, Program.Instance.Content);
                         for (int i = 0; i < mHeartCount; i++)

@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
-namespace Love_and_Hate
+namespace FlockU
 {
     public class AudioManager
     {

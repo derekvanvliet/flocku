@@ -17,7 +17,7 @@ public enum GameState
     GameOver
 }
 
-namespace Love_and_Hate
+namespace FlockU
 {
     /// <summary>
     /// This is the main type for your game
@@ -60,7 +60,7 @@ namespace Love_and_Hate
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = Config.Instance.GetAsInt("ScreenWidth");
             graphics.PreferredBackBufferHeight = Config.Instance.GetAsInt("ScreenHeight");
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
 
             mEnemies = new List<Enemy>();
             mPowerups = new List<Powerup>();
