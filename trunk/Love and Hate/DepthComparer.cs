@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Love_and_Hate
+namespace FlockU
 {
 	class DepthComparer : IComparer<Enemy>
 	{

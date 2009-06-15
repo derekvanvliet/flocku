@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
 
-namespace Love_and_Hate
+namespace FlockU
 {
     class Config
     {

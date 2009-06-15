@@ -1,7 +1,7 @@
 using System;
 //using System.Windows;  
 
-namespace Love_and_Hate
+namespace FlockU
 {
     static class Program
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Audio;
 
-namespace Love_and_Hate
+namespace FlockU
 {
     public class AudioCore
     {

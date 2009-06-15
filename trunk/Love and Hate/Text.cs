@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
-namespace Love_and_Hate
+namespace FlockU
 {
     public class Text : DrawableGameComponent
     {

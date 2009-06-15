@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Love_and_Hate
+namespace FlockU
 {
     public class PowerupHomingIcon : Sprite
     {
